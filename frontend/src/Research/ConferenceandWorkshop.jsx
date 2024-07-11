@@ -7,19 +7,19 @@ const ConferencesAndWorkshops = () => {
       title: "International Conference on Biotechnology",
       date: "August 20, 2024",
       location: "Auditorium A",
-      image: "https://via.placeholder.com/300x200?text=Biotechnology+Conference",
+      image: "https://e1.pxfuel.com/desktop-wallpaper/830/196/desktop-wallpaper-biotechnology.jpg",
     },
     {
       title: "Workshop on Nanotechnology",
       date: "September 15, 2024",
       location: "Lab 3",
-      image: "https://via.placeholder.com/300x200?text=Nanotechnology+Workshop",
+      image: "https://i.ytimg.com/vi/uUDWK4MGcr0/maxresdefault.jpg",
     },
     {
       title: "Environmental Science Seminar",
       date: "October 10, 2024",
       location: "Seminar Hall",
-      image: "https://via.placeholder.com/300x200?text=Environmental+Seminar",
+      image: "https://www.learnnow.org.uk/wp-content/uploads/2022/06/A-Level-Environmental-Science-AQA-scaled.jpg",
     },
   ];
 
@@ -28,19 +28,19 @@ const ConferencesAndWorkshops = () => {
       title: "Cybersecurity Conference",
       date: "March 12, 2024",
       location: "Conference Room B",
-      image: "https://via.placeholder.com/300x200?text=Cybersecurity+Conference",
+      image: "https://hackersonlineclub.com/wp-content/uploads/2016/11/Cyber-Security-Conference.png",
     },
     {
       title: "AI and Machine Learning Workshop",
       date: "April 22, 2024",
       location: "Lab 1",
-      image: "https://via.placeholder.com/300x200?text=AI+Workshop",
+      image: "https://www.rrce.org/blog/wp-content/uploads/2022/11/Artifical-Intelligence.-Machine-Learning-at-RRCE.png",
     },
     {
       title: "Renewable Energy Summit",
       date: "May 15, 2024",
       location: "Main Hall",
-      image: "https://via.placeholder.com/300x200?text=Energy+Summit",
+      image: "https://www.cmu.edu/energy/news-multimedia/2018/images/energy-week-900x600-min.jpg",
     },
   ];
 

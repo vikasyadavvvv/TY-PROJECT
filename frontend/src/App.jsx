@@ -23,6 +23,11 @@ import ResearchCentre from './Research/ResearchCentre';
 import Publications from './Research/Publication';
 import OngoingProjects from './Research/OngoingProject';
 import ConferencesAndWorkshops from './Research/ConferenceandWorkshop';
+import ClubsAndSocieties from './StudentLife/ClubsandSocieties';
+import EventsAndActivities from './StudentLife/EventandActivities';
+import Sports from './StudentLife/Sports';
+import Library from './StudentLife/Library';
+import CampusLife from './StudentLife/CampusLife';
 
 
 function App() {
@@ -53,6 +58,11 @@ function App() {
         <Route path='/publication' element={<Publications/>}></Route>
         <Route path='/ongoingproject' element={<OngoingProjects/>}></Route>
         <Route path='/conferenceandworkshop' element={<ConferencesAndWorkshops/>}></Route>
+        <Route path='/clubsandsocieties' element={<ClubsAndSocieties/>}></Route>
+        <Route path='/eventandactivities' element={<EventsAndActivities/>}></Route>
+        <Route path='/sports' element={<Sports/>}></Route>
+        <Route path='/library' element={<Library/>}></Route>
+        <Route path='/campuslife' element={<CampusLife/>}></Route>
       </Routes>
       <Footer />
 

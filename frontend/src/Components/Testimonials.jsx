@@ -2,14 +2,14 @@ import React from 'react';
 
 const testimonials = [
   {
-    name: "John Doe",
-    image: "https://randomuser.me/api/portraits/men/32.jpg", // Replace with actual image URL
+    name: "Yash",
+    image: "https://source.unsplash.com/300x200/yash", // Replace with actual image URL
     quote: "The faculty here are truly outstanding and have helped me grow academically and personally.",
     title: "Computer Science Graduate"
   },
   {
-    name: "Jane Smith",
-    image: "https://randomuser.me/api/portraits/women/44.jpg", // Replace with actual image URL
+    name: "Chirag",
+    image: "https://source.unsplash.com/300x200/chirag", // Replace with actual image URL
     quote: "I have had an amazing experience, thanks to the supportive community and excellent programs.",
     title: "Business Administration Student"
   },

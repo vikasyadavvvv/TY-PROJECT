@@ -20,6 +20,11 @@ import ResearchCentre from '../Research/ResearchCentre';
 import Publications from '../Research/Publication';
 import OngoingProjects from '../Research/OngoingProject';
 import ConferencesAndWorkshops from '../Research/ConferenceandWorkshop';
+import ClubsAndSocieties from '../StudentLife/ClubsandSocieties';
+import EventsAndActivities from '../StudentLife/EventandActivities';
+import Sports from '../StudentLife/Sports';
+import Library from '../StudentLife/Library';
+import CampusLife from '../StudentLife/CampusLife';
 
 
 const Navbar = () => {
@@ -95,12 +100,11 @@ const Navbar = () => {
             <button onClick={() => handleDropdown(4)} className="focus:outline-none">Student Life</button>
             {openDropdown === 4 && (
               <ul className="absolute left-0 mt-1 bg-white text-black lg:block shadow-lg z-20">
-                <li className="p-2 bg-white hover:bg-gray-400"><a href="#clubs">Clubs & Societies</a></li>
-                <li className="p-2 bg-white hover:bg-gray-400"><a href="#events">Events & Activities</a></li>
-                <li className="p-2 bg-white hover:bg-gray-400"><a href="#hostel">Hostel</a></li>
-                <li className="p-2 bg-white hover:bg-gray-400"><a href="#sports">Sports</a></li>
-                <li className="p-2 bg-white hover:bg-gray-400"><a href="#library">Library</a></li>
-                <li className="p-2 bg-white hover:bg-gray-400"><a href="#campus-life">Campus Life</a></li>
+               <Link to='/clubsandsocieties' element={<ClubsAndSocieties/>}><li className="p-2 bg-white hover:bg-gray-400">Clubs & Societies</li></Link> 
+               <Link to='/eventandactivities' element={<EventsAndActivities/>}><li className="p-2 bg-white hover:bg-gray-400">Events & Activities</li></Link> 
+               <Link to='/sports' element={<Sports/>}><li className="p-2 bg-white hover:bg-gray-400">Sports</li></Link> 
+               <Link to='/library' element={<Library/>}><li className="p-2 bg-white hover:bg-gray-400"><a href="#library">Library</a></li></Link> 
+              <Link to='/campuslife' element={<CampusLife/>}><li className="p-2 bg-white hover:bg-gray-400">Campus Life</li></Link>  
               </ul>
             )}
           </li>

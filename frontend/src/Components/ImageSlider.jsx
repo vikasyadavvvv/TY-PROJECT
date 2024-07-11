@@ -2,10 +2,11 @@
 import React, { useState } from 'react';
 
 const images = [
-  'https://wallpaperaccess.com/full/200620.jpg', 
-  'https://ayinfotechgh.com/wp-content/uploads/2019/10/AY-Infotechgh-Computer-lab.jpg',
-  'https://www.teacherlists.com/blog/wp-content/uploads/2013/09/100_3316.jpg',
-  'https://images.squarespace-cdn.com/content/v1/5a62abfc9f07f55bcda602ee/1518214008718-B8L8W7XV6KL2J8R7M4WY/ke17ZwdGBToddI8pDm48kFWxnDtCdRm2WA9rXcwtIYR7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QPOohDIaIeljMHgDF5CVlOqpeNLcJ80NK65_fV7S1UcTSrQkGwCGRqSxozz07hWZrYGYYH8sg4qn8Lpf9k1pYMHPsat2_S1jaQY3SwdyaXg/USM-CH_016.jpg',
+  'https://sandeshcollege.in/images/slider/c1.jpeg', 
+  'https://sandeshcollege.in/images/slider/c2.jpeg',
+  'https://sandeshcollege.in/images/slider/c4.jpeg',
+  'https://sandeshcollege.in/images/slider/c5.jpeg',
+  'https://sandeshcollege.in/images/slider/c3.jpeg'
 ];
 
 const ImageSlider = () => {
@@ -25,7 +26,6 @@ const ImageSlider = () => {
 
   return (
     <>
-    <div className='font-bold text-4xl text-black flex items-center justify-center mt-10 font-serif'>Gallery</div>
     <div className="relative w-full h-full max-w-5xl mx-auto overflow-hidden">
       <div
         className="flex transition-transform duration-500"
