@@ -16,22 +16,22 @@ const AboutSection = () => {
               Our College is dedicated to providing a world-class education and fostering an environment of excellence, innovation, and integrity. Our mission is to empower students to achieve their fullest potential and prepare them for successful careers and meaningful lives.
             </p>
             <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-8 font-serif">
-              <div className="text-center">
-                <AcademicCapIcon className="mx-auto h-12 w-12 text-indigo-600" />
+              <div className="text-center border border-gray-200 rounded-lg p-6 transition duration-500 hover:bg-gray-100">
+                <AcademicCapIcon className="mx-auto h-12 w-12 text-blue-600" />
                 <h3 className="mt-4 text-xl leading-6 font-medium text-gray-900">Quality Education</h3>
                 <p className="mt-2 text-base leading-6 text-gray-500">
                   Our programs are designed to provide the highest quality education.
                 </p>
               </div>
-              <div className="text-center">
-                <GlobeAltIcon className="mx-auto h-12 w-12 text-indigo-600" />
+              <div className="text-center border border-gray-200 rounded-lg p-6 transition duration-500 hover:bg-gray-100">
+                <GlobeAltIcon className="mx-auto h-12 w-12 text-green-600" />
                 <h3 className="mt-4 text-xl leading-6 font-medium text-gray-900">Global Reach</h3>
                 <p className="mt-2 text-base leading-6 text-gray-500">
                   We have a diverse student body from all over the world.
                 </p>
               </div>
-              <div className="text-center">
-                <UsersIcon className="mx-auto h-12 w-12 text-indigo-600" />
+              <div className="text-center border border-gray-200 rounded-lg p-6 transition duration-500 hover:bg-gray-100">
+                <UsersIcon className="mx-auto h-12 w-12 text-purple-600" />
                 <h3 className="mt-4 text-xl leading-6 font-medium text-gray-900">Community Focused</h3>
                 <p className="mt-2 text-base leading-6 text-gray-500">
                   Our community is dedicated to mutual growth and support.
@@ -39,11 +39,10 @@ const AboutSection = () => {
               </div>
             </div>
             <div className="mt-6 text-center">
-              <div
-              
-                className="text-base font-medium text-indigo-600 hover:text-indigo-500"
-              >
-             <Link to="/mission&vission" element={<MissionAndVision/>}>  Learn more about our history and mission<span aria-hidden="true"> &rarr;</span> </Link>
+              <div className="text-base font-medium text-indigo-600 hover:text-indigo-500">
+                <Link to="/mission&vission">
+                  Learn more about our history and mission <span aria-hidden="true">&rarr;</span>
+                </Link>
               </div>
             </div>
           </div>

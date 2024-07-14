@@ -14,18 +14,18 @@ const QuickLinks = () => {
         </div>
         <div className="mt-12 grid gap-8 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 font-serif">
           <div className="bg-white p-6 rounded-lg shadow-lg flex items-center justify-center">
-            <a href="/admissions" className="text-xl font-semibold text-indigo-600 hover:text-indigo-500">
-              Admissions
+            <a href="/" className="text-xl font-semibold text-indigo-600 hover:text-indigo-500">
+              SWAYAM
             </a>
           </div>
           <div className="bg-white p-6 rounded-lg shadow-lg flex items-center justify-center font-serif">
-            <a href="/courses" className="text-xl font-semibold text-indigo-600 hover:text-indigo-500">
-              Courses
+            <a href="/" className="text-xl font-semibold text-indigo-600 hover:text-indigo-500">
+              MOOC
             </a>
           </div>
           <div className="bg-white p-6 rounded-lg shadow-lg flex items-center justify-center font-serif">
-            <a href="/facilities" className="text-xl font-semibold text-indigo-600 hover:text-indigo-500">
-              Facilities
+            <a href="/" className="text-xl font-semibold text-indigo-600 hover:text-indigo-500">
+              ABC ID
             </a>
           </div>
           <div className="bg-white p-6 rounded-lg shadow-lg flex items-center justify-center font-serif">

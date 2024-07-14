@@ -1,5 +1,6 @@
 import React from 'react';
 import { BookOpenIcon, StarIcon } from '@heroicons/react/24/outline';
+import { Link } from 'react-router-dom';
 
 const AcademicHighlights = () => {
   return (
@@ -13,23 +14,23 @@ const AcademicHighlights = () => {
             Explore our featured programs and the remarkable achievements of our faculty.
           </p>
           <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-white p-6 rounded-lg shadow-lg">
+            <div className="bg-white p-6 rounded-lg shadow-lg border border-gray-200 hover:shadow-xl transition duration-300">
               <div className="flex items-center">
-                <BookOpenIcon className="h-12 w-12 text-indigo-600" />
+                <BookOpenIcon className="h-12 w-12 text-blue-600" />
                 <div className="ml-4 font-serif">
                   <h3 className="text-xl font-medium text-gray-900">Featured Programs</h3>
-                  <p className="mt-2 text-base leading-6 text-gray-500">
+                  <p className="mt-2 text-base leading-6 text-gray-600">
                     Discover our renowned programs in engineering, business, and the arts. Our curriculum is designed to provide students with the skills and knowledge they need to succeed in their chosen fields.
                   </p>
                 </div>
               </div>
             </div>
-            <div className="bg-white p-6 rounded-lg shadow-lg font-serif">
+            <div className="bg-white p-6 rounded-lg shadow-lg border border-gray-200 hover:shadow-xl transition duration-300">
               <div className="flex items-center">
-                <StarIcon className="h-12 w-12 text-indigo-600" />
-                <div className="ml-4">
+                <StarIcon className="h-12 w-12 text-yellow-600" />
+                <div className="ml-4 font-serif">
                   <h3 className="text-xl font-medium text-gray-900">Faculty Achievements</h3>
-                  <p className="mt-2 text-base leading-6 text-gray-500">
+                  <p className="mt-2 text-base leading-6 text-gray-600">
                     Our faculty members are leaders in their fields, recognized for their groundbreaking research, publications, and contributions to academia. They are dedicated to mentoring the next generation of scholars and professionals.
                   </p>
                 </div>
@@ -37,12 +38,12 @@ const AcademicHighlights = () => {
             </div>
           </div>
           <div className="mt-6 text-center">
-            <a
-              href="/academics"
+            <Link
+              to="/course"
               className="text-base font-medium text-indigo-600 hover:text-indigo-500"
             >
               Learn more about our academic offerings<span aria-hidden="true"> &rarr;</span>
-            </a>
+            </Link>
           </div>
         </div>
       </div>
