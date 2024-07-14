@@ -25,6 +25,11 @@ import EventsAndActivities from '../StudentLife/EventandActivities';
 import Sports from '../StudentLife/Sports';
 import Library from '../StudentLife/Library';
 import CampusLife from '../StudentLife/CampusLife';
+import PlacementCell from '../Placement/PlacementCell';
+import Recruiters from '../Placement/Recruiters';
+import AlumniAssociation from '../Alumini/AluminiAssociation';
+import NotableAlumni from '../Alumini/NotableAlumini';
+import StudentLogin from '../Login/StudentLogin';
 
 
 const Navbar = () => {
@@ -112,10 +117,9 @@ const Navbar = () => {
             <button onClick={() => handleDropdown(5)} className="focus:outline-none">Placements</button>
             {openDropdown === 5 && (
               <ul className="absolute left-0 mt-1 bg-white text-black lg:block shadow-lg z-20">
-                <li className="p-2 bg-white hover:bg-gray-400"><a href="#placement-cell">Placement Cell</a></li>
-                <li className="p-2 bg-white hover:bg-gray-400"><a href="#recruiters">Recruiters</a></li>
-                <li className="p-2 bg-white hover:bg-gray-400"><a href="#stats">Placement Statistics</a></li>
-                <li className="p-2 bg-white hover:bg-gray-400"><a href="#internships">Internships</a></li>
+              <Link to='/placementcell' element={<PlacementCell/>}><li className="p-2 bg-white hover:bg-gray-400">Placement Cell</li></Link>
+               <Link to='/recruiters' element={<Recruiters/>}><li className="p-2 bg-white hover:bg-gray-400">Recruiters</li></Link> 
+               <Link to='/placementstatics' element={<PlacementCell/>}><li className="p-2 bg-white hover:bg-gray-400">Placement Statistics</li></Link> 
               </ul>
             )}
           </li>
@@ -123,21 +127,18 @@ const Navbar = () => {
             <button onClick={() => handleDropdown(6)} className="focus:outline-none">Alumni</button>
             {openDropdown === 6 && (
               <ul className="absolute left-0 mt-1 bg-white text-black lg:block shadow-lg z-20">
-                <li className="p-2 bg-white hover:bg-gray-400"><a href="#association">Alumni Association</a></li>
-                <li className="p-2 bg-white hover:bg-gray-400"><a href="#notable">Notable Alumni</a></li>
-                <li className="p-2 bg-white hover:bg-gray-400"><a href="#alumni-events">Events</a></li>
+               <Link to='/aluminiassociation' element={<AlumniAssociation/>}><li className="p-2 bg-white hover:bg-gray-400">Alumni Association</li></Link> 
+               <Link to='/notablealumini' element={<NotableAlumni/>}><li className="p-2 bg-white hover:bg-gray-400">Notable Alumni</li></Link> 
               </ul>
             )}
           
           </li>
 
-          <li className='text-lg  font-serif mb-2'><a href="#news">News & Events</a></li>
-          <li className='text-lg  font-serif mb-2'><a href="#contact">Contact Us</a></li>
           <li className="text-lg  font-serif relative group mb-2">
             <button onClick={() => handleDropdown(7)} className="focus:outline-none">Login</button>
             {openDropdown === 7 && (
               <ul className="absolute left-0 mt-1 bg-white text-black lg:block shadow-lg z-20">
-                <li className="p-2 bg-white hover:bg-gray-400"><a href="#association"> Student Login</a></li>
+               <Link to='/studentlogin' element={<StudentLogin/>}><li className="p-2 bg-white hover:bg-gray-400"> Student Login</li></Link> 
                 <li className="p-2 bg-white hover:bg-gray-400"><a href="#association"> Admin Login</a></li>
 
               </ul>

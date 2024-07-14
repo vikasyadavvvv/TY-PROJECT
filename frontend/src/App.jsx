@@ -28,6 +28,12 @@ import EventsAndActivities from './StudentLife/EventandActivities';
 import Sports from './StudentLife/Sports';
 import Library from './StudentLife/Library';
 import CampusLife from './StudentLife/CampusLife';
+import PlacementCell from './Placement/PlacementCell';
+import Recruiters from './Placement/Recruiters';
+import PlacementStatistics from './Placement/PlacementStatics';
+import AlumniAssociation from './Alumini/AluminiAssociation';
+import NotableAlumni from './Alumini/NotableAlumini';
+import StudentLogin from './Login/StudentLogin';
 
 
 function App() {
@@ -63,6 +69,12 @@ function App() {
         <Route path='/sports' element={<Sports/>}></Route>
         <Route path='/library' element={<Library/>}></Route>
         <Route path='/campuslife' element={<CampusLife/>}></Route>
+        <Route path='/placementcell' element={<PlacementCell/>}></Route>
+        <Route path='/recruiters' element={<Recruiters/>}></Route>
+        <Route path='/placementstatics' element={<PlacementStatistics/>}></Route>
+        <Route path='/aluminiassociation' element={<AlumniAssociation/>}></Route>
+        <Route path='/notablealumini' element={<NotableAlumni/>}></Route>
+        <Route path='/studentlogin' element={<StudentLogin/>}></Route>
       </Routes>
       <Footer />
 
