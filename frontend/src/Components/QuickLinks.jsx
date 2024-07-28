@@ -28,21 +28,6 @@ const QuickLinks = () => {
               ABC ID
             </a>
           </div>
-          <div className="bg-white p-6 rounded-lg shadow-lg flex items-center justify-center font-serif">
-            <a href="/events" className="text-xl font-semibold text-indigo-600 hover:text-indigo-500">
-              Events
-            </a>
-          </div>
-          <div className="bg-white p-6 rounded-lg shadow-lg flex items-center justify-center font-serif">
-            <a href="/student-life" className="text-xl font-semibold text-indigo-600 hover:text-indigo-500">
-              Student Life
-            </a>
-          </div>
-          <div className="bg-white p-6 rounded-lg shadow-lg flex items-center justify-center font-sreif">
-            <a href="/contact" className="text-xl font-semibold text-indigo-600 hover:text-indigo-500">
-              Contact Us
-            </a>
-          </div>
         </div>
       </div>
     </div>

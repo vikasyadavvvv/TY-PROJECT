@@ -3,6 +3,8 @@ import { FaFacebook } from "react-icons/fa6";
 import { FaInstagram } from "react-icons/fa";
 import { FaSquareXTwitter } from "react-icons/fa6";
 import { FaLinkedin } from "react-icons/fa";
+import { IoLogoYoutube } from "react-icons/io";
+
 
 
 
@@ -25,6 +27,8 @@ const Header = () => {
           <FaInstagram className='mr-6 cursor-pointer' />
           <FaSquareXTwitter className='mr-6 cursor-pointer' />
           <FaLinkedin className='mr-6 cursor-pointer' />
+          <IoLogoYoutube className='mr-6 cursor-pointer' />
+
         </div>
 
 

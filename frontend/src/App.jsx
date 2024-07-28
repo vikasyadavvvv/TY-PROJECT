@@ -34,6 +34,10 @@ import PlacementStatistics from './Placement/PlacementStatics';
 import AlumniAssociation from './Alumini/AluminiAssociation';
 import NotableAlumni from './Alumini/NotableAlumini';
 import StudentLogin from './Login/StudentLogin';
+import AboutIQAC from './IQAC/AbaoutIQAC';
+import ATRPage from './IQAC/ATR';
+import AAAReportPage from './IQAC/AAA';
+import StakeholderFeedbackPage from './IQAC/Stackholder';
 
 
 function App() {
@@ -75,6 +79,10 @@ function App() {
         <Route path='/aluminiassociation' element={<AlumniAssociation/>}></Route>
         <Route path='/notablealumini' element={<NotableAlumni/>}></Route>
         <Route path='/studentlogin' element={<StudentLogin/>}></Route>
+        <Route path='/abaoutIQAC' element={<AboutIQAC/>}></Route>
+        <Route path='/atr' element={<ATRPage/>}></Route>
+        <Route path='/aaa' element={<AAAReportPage/>}></Route>
+        <Route path='/stackholderfeedback' element={<StakeholderFeedbackPage/>}></Route>
       </Routes>
       <Footer />
 

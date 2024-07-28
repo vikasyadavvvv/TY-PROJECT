@@ -15,23 +15,21 @@ const Footer = () => {
           <div className="mb-8 md:mb-0">
             <h3 className="text-xl font-bold mb-4">Quick Links</h3>
             <ul>
-              <li><a href="/admissions" className="block py-1 hover:text-gray-300">Admissions</a></li>
-              <li><a href="/courses" className="block py-1 hover:text-gray-300">Courses</a></li>
-              <li><a href="/facilities" className="block py-1 hover:text-gray-300">Facilities</a></li>
-              <li><a href="/events" className="block py-1 hover:text-gray-300">Events</a></li>
-              <li><a href="/student-life" className="block py-1 hover:text-gray-300">Student Life</a></li>
-              <li><a href="/contact" className="block py-1 hover:text-gray-300">Contact Us</a></li>
+              <li><a href="/admissions" className="block py-1 hover:text-gray-300">SWAYAM</a></li>
+              <li><a href="/courses" className="block py-1 hover:text-gray-300">MOOC</a></li>
+              <li><a href="/facilities" className="block py-1 hover:text-gray-300">ABC ID</a></li>
             </ul>
           </div>
           <div className="mb-8 md:mb-0">
             <h3 className="text-xl font-bold mb-4">Contact Us</h3>
             <div className="flex items-center mb-4">
               <FaMapMarkerAlt className="text-white" />
-              <span className="ml-2 hover:text-white">Tagore Nagar, Vikhroli (East), Mumbai <span className='font-mono'>400 083</span></span>
+              <a href="https://www.google.co.in/maps/place/Sandesh+College+of+Arts+Commerce+%26+Science/@19.1161459,72.9310825,17z/data=!3m1!4b1!4m6!3m5!1s0x3be7c797781ba093:0x3402b356cc8e61a5!8m2!3d19.1161459!4d72.9336574!16s%2Fg%2F1tppqf8m?entry=ttu">
+              <span className="ml-2 hover:text-white">Tagore Nagar, Vikhroli (East), Mumbai <span className='font-mono'>400 083</span></span> </a>
             </div>
             <div className="flex items-center">
               <FaPhoneAlt className="text-white" />
-              <span className="ml-2 hover:text-white font-mono">2574 4906, 2573 1633</span>
+              <span className="ml-2 hover:text-white font-mono">2574 4906 2573 1633</span>
             </div>
           </div>
           <div>
@@ -54,7 +52,7 @@ const Footer = () => {
         <div className="mt-8 border-t border-gray-700 pt-6 text-sm text-slate-200">
           <div className="flex items-center justify-center text-center">
             <p>&copy; {new Date().getFullYear()} All rights reserved || Designed by <span className='text-red-600'>Vikas Yadav</span></p>
-            </div>
+          </div>
         </div>
       </div>
     </footer>

@@ -30,6 +30,10 @@ import Recruiters from '../Placement/Recruiters';
 import AlumniAssociation from '../Alumini/AluminiAssociation';
 import NotableAlumni from '../Alumini/NotableAlumini';
 import StudentLogin from '../Login/StudentLogin';
+import AboutIQAC from '../IQAC/AbaoutIQAC';
+import ATRPage from '../IQAC/ATR';
+import AAAReportPage from '../IQAC/AAA';
+import StakeholderFeedbackPage from '../IQAC/Stackholder';
 
 
 const Navbar = () => {
@@ -135,8 +139,49 @@ const Navbar = () => {
           </li>
 
           <li className="text-lg  font-serif relative group mb-2">
-            <button onClick={() => handleDropdown(7)} className="focus:outline-none">Login</button>
+            <button onClick={() => handleDropdown(7)} className="focus:outline-none">IQAC</button>
             {openDropdown === 7 && (
+              <ul className="absolute left-0 mt-1 bg-white text-black lg:block shadow-lg z-20">
+               <Link to='/abaoutIQAC' element={<AboutIQAC/>}><li className="p-2 bg-white hover:bg-gray-400">About IQAC</li></Link> 
+               <Link to='/atr' element={<ATRPage/>}><li className="p-2 bg-white hover:bg-gray-400">ATR</li></Link>
+               <Link to='/aaa' element={<AAAReportPage/>}><li className="p-2 bg-white hover:bg-gray-400">AAA Report</li></Link> 
+               <Link to='/stackholderfeedback' element={<StakeholderFeedbackPage/>}><li className="p-2 bg-white hover:bg-gray-400">Stackholder Feedback</li></Link> 
+
+
+              </ul>
+            )}
+          </li>
+
+          <li className="text-lg  font-serif relative group mb-2">
+            <button onClick={() => handleDropdown(8)} className="focus:outline-none">NAAC</button>
+            {openDropdown === 8 && (
+              <ul className="absolute left-0 mt-1 bg-white text-black lg:block shadow-lg z-20">
+                <li className="p-2 bg-white hover:bg-gray-400">A QAR</li>
+                <li className="p-2 bg-white hover:bg-gray-400">IIQA</li>
+                <li className="p-2 bg-white hover:bg-gray-400">SSR</li>
+                <li className="p-2 bg-white hover:bg-gray-400">NAAC Visit</li>
+
+
+              </ul>
+            )}
+
+          </li>
+          <li className="text-lg  font-serif relative group mb-2">
+            <button onClick={() => handleDropdown(9)} className="focus:outline-none">NIRF</button>
+            {openDropdown === 9 && (
+              <ul className="absolute left-0 mt-1 bg-white text-black lg:block shadow-lg z-20">
+
+
+              </ul>
+            )}
+          </li>
+
+
+
+
+          <li className="text-lg  font-serif relative group mb-2">
+            <button onClick={() => handleDropdown(10)} className="focus:outline-none">Login</button>
+            {openDropdown === 10 && (
               <ul className="absolute left-0 mt-1 bg-white text-black lg:block shadow-lg z-20">
                <Link to='/studentlogin' element={<StudentLogin/>}><li className="p-2 bg-white hover:bg-gray-400"> Student Login</li></Link> 
                 <li className="p-2 bg-white hover:bg-gray-400"><a href="#association"> Admin Login</a></li>
