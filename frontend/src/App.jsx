@@ -38,6 +38,10 @@ import AboutIQAC from './IQAC/AbaoutIQAC';
 import ATRPage from './IQAC/ATR';
 import AAAReportPage from './IQAC/AAA';
 import StakeholderFeedbackPage from './IQAC/Stackholder';
+import NAACAccreditation from './NAAC/ACC';
+import InstitutionInfo from './NAAC/Institutioninfo';
+import NAACSSR from './NAAC/SSR';
+import NAACVisit from './NAAC/NAACvisit';
 
 
 function App() {
@@ -83,6 +87,10 @@ function App() {
         <Route path='/atr' element={<ATRPage/>}></Route>
         <Route path='/aaa' element={<AAAReportPage/>}></Route>
         <Route path='/stackholderfeedback' element={<StakeholderFeedbackPage/>}></Route>
+        <Route path='/acc' element={<NAACAccreditation/>}>s</Route>
+        <Route path='/instinfo' element={<InstitutionInfo/>}></Route>
+        <Route path='/ssr' element={<NAACSSR/>}></Route>
+        <Route path='/naacvisit' element={<NAACVisit/>}></Route>
       </Routes>
       <Footer />
 

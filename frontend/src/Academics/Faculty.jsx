@@ -5,48 +5,239 @@ import { faEnvelope, faPhone, faBuilding } from '@fortawesome/free-solid-svg-ico
 
 const facultyMembers = [
   {
-    name: 'Dr. John Doe',
-    photo: 'https://via.placeholder.com/150',
+    name: 'Prof.Tasleem Hafizullah Khan',  
+    photo: 'https://tse4.explicit.bing.net/th?id=OIP.hgWW7DgIs4OdGYIEYfF8EgHaFO&pid=Api&P=0&h=180',
     designation: 'Professor & Head of Department',
     department: 'Computer Science',
     email: 'johndoe@example.com',
     phone: '123-456-7890'
   },
   {
-    name: 'Dr. Alice Johnson',
-    photo: 'https://via.placeholder.com/150',
+    name: 'Dr. Suryakant Arjun Ajgaonkar',
+    photo: 'https://tse3.mm.bing.net/th?id=OIP.K7HqZqvbDmUQE032m_FhhgHaHa&pid=Api&P=0&h=180',
     designation: 'Professor',
     department: 'Computer Science',
     email: 'alicejohnson@example.com',
     phone: '234-567-8901'
   },
   {
-    name: 'Dr. Jane Smith',
-    photo: 'https://via.placeholder.com/150',
+    name: 'Prof. Shivangi Suhasraje Dhondge',
+    photo: 'https://tse4.explicit.bing.net/th?id=OIP.hgWW7DgIs4OdGYIEYfF8EgHaFO&pid=Api&P=0&h=180',
     designation: 'Associate Professor & Head of Department',
     department: 'Chemistry',
     email: 'janesmith@example.com',
     phone: '098-765-4321'
   },
   {
-    name: 'Dr. Mark Brown',
-    photo: 'https://via.placeholder.com/150',
+    name: 'Prof. Vasundhara Gunwant Wadibhasme',
+    photo: 'https://tse4.explicit.bing.net/th?id=OIP.hgWW7DgIs4OdGYIEYfF8EgHaFO&pid=Api&P=0&h=180',
     designation: 'Assistant Professor',
     department: 'Chemistry',
     email: 'markbrown@example.com',
     phone: '345-678-9012'
   },
   {
-    name: 'Dr. Robert Brown',
-    photo: 'https://via.placeholder.com/150',
+    name: 'Prof. Gautam Babya Gamare',
+    photo: 'https://tse3.mm.bing.net/th?id=OIP.K7HqZqvbDmUQE032m_FhhgHaHa&pid=Api&P=0&h=180',
     designation: 'Assistant Professor & Head of Department',
     department: 'Business Administration',
     email: 'robertbrown@example.com',
     phone: '456-789-0123'
   },
   {
-    name: 'Dr. Emily Davis',
-    photo: 'https://via.placeholder.com/150',
+    name: 'Prof. Prakash Ravan Dake',
+    photo: 'https://tse3.mm.bing.net/th?id=OIP.K7HqZqvbDmUQE032m_FhhgHaHa&pid=Api&P=0&h=180',
+    designation: 'Lecturer',
+    department: 'Business Administration',
+    email: 'emilydavis@example.com',
+    phone: '567-890-1234'
+  },
+  {
+    name: 'Prof. Vaidehi Vinay Mhatre',
+    photo: 'https://tse4.explicit.bing.net/th?id=OIP.hgWW7DgIs4OdGYIEYfF8EgHaFO&pid=Api&P=0&h=180',
+    designation: 'Lecturer',
+    department: 'Business Administration',
+    email: 'emilydavis@example.com',
+    phone: '567-890-1234'
+  },
+  {
+    name: 'Prof. Trupti Rajesh Barve',
+    photo: 'https://tse4.explicit.bing.net/th?id=OIP.hgWW7DgIs4OdGYIEYfF8EgHaFO&pid=Api&P=0&h=180',
+    designation: 'Lecturer',
+    department: 'Business Administration',
+    email: 'emilydavis@example.com',
+    phone: '567-890-1234'
+  },
+  {
+    name: 'Prof. Akshada Jitesh Lawande',
+    photo: 'https://tse4.explicit.bing.net/th?id=OIP.hgWW7DgIs4OdGYIEYfF8EgHaFO&pid=Api&P=0&h=180',
+    designation: 'Lecturer',
+    department: 'Business Administration',
+    email: 'emilydavis@example.com',
+    phone: '567-890-1234'
+  },
+  {
+    name: 'Prof. Tejashree Nandakumar Chirame',
+    photo: 'https://tse4.explicit.bing.net/th?id=OIP.hgWW7DgIs4OdGYIEYfF8EgHaFO&pid=Api&P=0&h=180',
+    designation: 'Lecturer',
+    department: 'Business Administration',
+    email: 'emilydavis@example.com',
+    phone: '567-890-1234'
+  },
+  {
+    name: 'Prof. NileshKumar Pandey',
+    photo: 'https://tse3.mm.bing.net/th?id=OIP.K7HqZqvbDmUQE032m_FhhgHaHa&pid=Api&P=0&h=180',
+    designation: 'Lecturer',
+    department: 'Business Administration',
+    email: 'emilydavis@example.com',
+    phone: '567-890-1234'
+  },
+  {
+    name: 'Prof. SureshKumar Gehnoliya',
+    photo: 'https://tse3.mm.bing.net/th?id=OIP.K7HqZqvbDmUQE032m_FhhgHaHa&pid=Api&P=0&h=180',
+    designation: 'Lecturer',
+    department: 'Business Administration',
+    email: 'emilydavis@example.com',
+    phone: '567-890-1234'
+  },
+  {
+    name: 'Prof. Sarah Grace Jason',
+    photo: 'https://tse3.mm.bing.net/th?id=OIP.K7HqZqvbDmUQE032m_FhhgHaHa&pid=Api&P=0&h=180',
+    designation: 'Lecturer',
+    department: 'Business Administration',
+    email: 'emilydavis@example.com',
+    phone: '567-890-1234'
+  },  {
+    name: 'Prof. Namrata Rupesh Gaikward',
+    photo: 'https://tse4.explicit.bing.net/th?id=OIP.hgWW7DgIs4OdGYIEYfF8EgHaFO&pid=Api&P=0&h=180',
+    designation: 'Lecturer',
+    department: 'Business Administration',
+    email: 'emilydavis@example.com',
+    phone: '567-890-1234'
+  },  {
+    name: 'Prof. Sushma Mewalal Yadhav',
+    photo: 'https://tse4.explicit.bing.net/th?id=OIP.hgWW7DgIs4OdGYIEYfF8EgHaFO&pid=Api&P=0&h=180',
+    designation: 'Lecturer',
+    department: 'Business Administration',
+    email: 'emilydavis@example.com',
+    phone: '567-890-1234'
+  },  {
+    name: 'Prof. Deepali .P. Salve',
+    photo: 'https://tse4.explicit.bing.net/th?id=OIP.hgWW7DgIs4OdGYIEYfF8EgHaFO&pid=Api&P=0&h=180',
+    designation: 'Lecturer',
+    department: 'Business Administration',
+    email: 'emilydavis@example.com',
+    phone: '567-890-1234'
+  },  {
+    name: 'Prof. Aahad Hussain Mohammad Hussain Shaikh',
+    photo: 'https://tse3.mm.bing.net/th?id=OIP.K7HqZqvbDmUQE032m_FhhgHaHa&pid=Api&P=0&h=180',
+    designation: 'Lecturer',
+    department: 'Business Administration',
+    email: 'emilydavis@example.com',
+    phone: '567-890-1234'
+  },
+  {
+    name: 'Prof. Ashish Jha',
+    photo: 'https://tse3.mm.bing.net/th?id=OIP.K7HqZqvbDmUQE032m_FhhgHaHa&pid=Api&P=0&h=180',
+    designation: 'Lecturer',
+    department: 'Business Administration',
+    email: 'emilydavis@example.com',
+    phone: '567-890-1234'
+  },{
+    name: 'Prof. Priyanka Surendra Swami',
+    photo: 'https://tse4.explicit.bing.net/th?id=OIP.hgWW7DgIs4OdGYIEYfF8EgHaFO&pid=Api&P=0&h=180',
+    designation: 'Lecturer',
+    department: 'Business Administration',
+    email: 'emilydavis@example.com',
+    phone: '567-890-1234'
+  },{
+    name: 'Prof. Poonam Sukkhu Kannaujiya',
+    photo: 'https://tse4.explicit.bing.net/th?id=OIP.hgWW7DgIs4OdGYIEYfF8EgHaFO&pid=Api&P=0&h=180',
+    designation: 'Lecturer',
+    department: 'Business Administration',
+    email: 'emilydavis@example.com',
+    phone: '567-890-1234'
+  },{
+    name: 'Prof. Ganesh. Promod Kulkarni',
+    photo: 'https://tse3.mm.bing.net/th?id=OIP.K7HqZqvbDmUQE032m_FhhgHaHa&pid=Api&P=0&h=180',
+    designation: 'Lecturer',
+    department: 'Business Administration',
+    email: 'emilydavis@example.com',
+    phone: '567-890-1234'
+  },{
+    name: 'Prof. Shabnoor Adam Dange',
+    photo: 'https://tse3.mm.bing.net/th?id=OIP.K7HqZqvbDmUQE032m_FhhgHaHa&pid=Api&P=0&h=180',
+    designation: 'Lecturer',
+    department: 'Business Administration',
+    email: 'emilydavis@example.com',
+    phone: '567-890-1234'
+  },{
+    name: 'Prof. Samwel Bhira Maci',
+    photo: 'https://tse3.mm.bing.net/th?id=OIP.K7HqZqvbDmUQE032m_FhhgHaHa&pid=Api&P=0&h=180',
+    designation: 'Lecturer',
+    department: 'Business Administration',
+    email: 'emilydavis@example.com',
+    phone: '567-890-1234'
+  },{
+    name: 'Prof. Farzana Firoz Shaikh',
+    photo: 'https://tse4.explicit.bing.net/th?id=OIP.hgWW7DgIs4OdGYIEYfF8EgHaFO&pid=Api&P=0&h=180',
+    designation: 'Lecturer',
+    department: 'Business Administration',
+    email: 'emilydavis@example.com',
+    phone: '567-890-1234'
+  },{
+    name: 'Prof Kaustubh Pradeep Kadam',
+    photo: 'https://tse3.mm.bing.net/th?id=OIP.K7HqZqvbDmUQE032m_FhhgHaHa&pid=Api&P=0&h=180',
+    designation: 'Lecturer',
+    department: 'Business Administration',
+    email: 'emilydavis@example.com',
+    phone: '567-890-1234'
+  },{
+    name: 'Prof. Daksha Girish Kamble',
+    photo: 'https://tse4.explicit.bing.net/th?id=OIP.hgWW7DgIs4OdGYIEYfF8EgHaFO&pid=Api&P=0&h=180',
+    designation: 'Lecturer',
+    department: 'Business Administration',
+    email: 'emilydavis@example.com',
+    phone: '567-890-1234'
+  },{
+    name: 'Prof. Shrikrishna Vishnu Chindarkar',
+    photo: 'https://tse3.mm.bing.net/th?id=OIP.K7HqZqvbDmUQE032m_FhhgHaHa&pid=Api&P=0&h=180',
+    designation: 'Lecturer',
+    department: 'Business Administration',
+    email: 'emilydavis@example.com',
+    phone: '567-890-1234'
+  },{
+    name: 'Prof. Chaaya Vikas Jagtap',
+    photo: 'https://tse4.explicit.bing.net/th?id=OIP.hgWW7DgIs4OdGYIEYfF8EgHaFO&pid=Api&P=0&h=180',
+    designation: 'Lecturer',
+    department: 'Business Administration',
+    email: 'emilydavis@example.com',
+    phone: '567-890-1234'
+  },
+  {
+    name: 'Prof. Shankar Suresh Pawar',
+    photo: 'https://tse3.mm.bing.net/th?id=OIP.K7HqZqvbDmUQE032m_FhhgHaHa&pid=Api&P=0&h=180',
+    designation: 'Lecturer',
+    department: 'Business Administration',
+    email: 'emilydavis@example.com',
+    phone: '567-890-1234'
+  },{
+    name: 'Prof. Anil Pandurang Varlekar',
+    photo: 'https://tse3.mm.bing.net/th?id=OIP.K7HqZqvbDmUQE032m_FhhgHaHa&pid=Api&P=0&h=180',
+    designation: 'Lecturer',
+    department: 'Business Administration',
+    email: 'emilydavis@example.com',
+    phone: '567-890-1234'
+  },{
+    name: 'Prof. Deepak Suresh Pednekar',
+    photo: 'https://tse3.mm.bing.net/th?id=OIP.K7HqZqvbDmUQE032m_FhhgHaHa&pid=Api&P=0&h=180',
+    designation: 'Lecturer',
+    department: 'Business Administration',
+    email: 'emilydavis@example.com',
+    phone: '567-890-1234'
+  },{
+    name: 'Prof. Adesh Nana Bhalekar',
+    photo: 'https://tse3.mm.bing.net/th?id=OIP.K7HqZqvbDmUQE032m_FhhgHaHa&pid=Api&P=0&h=180',
     designation: 'Lecturer',
     department: 'Business Administration',
     email: 'emilydavis@example.com',

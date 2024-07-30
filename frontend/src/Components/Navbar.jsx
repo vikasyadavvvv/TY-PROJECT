@@ -34,6 +34,10 @@ import AboutIQAC from '../IQAC/AbaoutIQAC';
 import ATRPage from '../IQAC/ATR';
 import AAAReportPage from '../IQAC/AAA';
 import StakeholderFeedbackPage from '../IQAC/Stackholder';
+import NAACAccreditation from '../NAAC/ACC';
+import InstitutionInfo from '../NAAC/Institutioninfo';
+import NAACSSR from '../NAAC/SSR';
+import NAACVisit from '../NAAC/NAACvisit';
 
 
 const Navbar = () => {
@@ -63,7 +67,7 @@ const Navbar = () => {
             <button onClick={() => handleDropdown(0)} className="focus:outline-none">About Us</button>
             {openDropdown === 0 && (
               <ul className="absolute left-0 mt-1 bg-white text-black lg:block shadow-lg z-20">
-             <Link to="/history" element={<History/>}>  <li className="p-2 bg-white hover:bg-gray-400">History</li> </Link>
+             <Link to="/history" element={<History/>}>  <li className="p-2 bg-white hover:bg-gray-400">President Message</li> </Link>
              <Link to="/mission&vission" element={<MissionAndVision/>} ><li className="p-2 bg- hover:bg-gray-400 ">Mission & Vision</li> </Link>
             <Link to="/leadership" element={<Leadership/>}>  <li className="p-2 bg- hover:bg-gray-400 ">Leadership</li> </Link>
             <Link to="/achievement" element={<Achievements/>}><li className="p-2 bg- hover:bg-gray-400 "> Achievements</li></Link>
@@ -156,10 +160,10 @@ const Navbar = () => {
             <button onClick={() => handleDropdown(8)} className="focus:outline-none">NAAC</button>
             {openDropdown === 8 && (
               <ul className="absolute left-0 mt-1 bg-white text-black lg:block shadow-lg z-20">
-                <li className="p-2 bg-white hover:bg-gray-400">A QAR</li>
-                <li className="p-2 bg-white hover:bg-gray-400">IIQA</li>
-                <li className="p-2 bg-white hover:bg-gray-400">SSR</li>
-                <li className="p-2 bg-white hover:bg-gray-400">NAAC Visit</li>
+               <Link to='/acc' element={<NAACAccreditation/>}><li className="p-2 bg-white hover:bg-gray-400">A QAR</li></Link> 
+               <Link to='/instinfo' element={<InstitutionInfo/>}><li className="p-2 bg-white hover:bg-gray-400">IIQA</li></Link> 
+               <Link to='/ssr' element={<NAACSSR/>}><li className="p-2 bg-white hover:bg-gray-400">SSR</li></Link> 
+               <Link to='/naacvisit' element={<NAACVisit/>}><li className="p-2 bg-white hover:bg-gray-400">NAAC Visit</li></Link> 
 
 
               </ul>

@@ -1,60 +1,56 @@
-
-
 import React from 'react';
 
 const History = () => {
   return (
     <div className="bg-gray-100 py-10">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
-        <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">History of the College</h2>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">President's Message</h2>
         <div className="bg-white shadow-lg rounded-lg p-6 font-serif">
           <div className="mb-4 flex items-start">
-            <i className="fas fa-university text-2xl text-blue-500 mr-3"></i>
+            <i className="fas fa-user-tie text-2xl text-blue-500 mr-3"></i>
             <p className="text-gray-700">
-              Established in [Year], our college began with a vision of quality education for all. Today, we are a leading institution known for academic excellence and vibrant campus life.
+              Dear Students, I am pleased to know that you are planning to pursue your further studies at our institution. A hearty welcome to you all at <strong>Dnyan Prasarak Shikshan Sanstha</strong>. The main slogan of our institution is <em>"Education is for Knowledge, Science & Culture."</em>
             </p>
           </div>
           <div className="mb-4 flex items-start">
-            <i className="fas fa-users text-2xl text-green-500 mr-3"></i>
+            <i className="fas fa-calendar-alt text-2xl text-green-500 mr-3"></i>
             <p className="text-gray-700">
-              Our founders aimed to create a nurturing environment for intellectual growth and creativity. We offer a range of undergraduate and postgraduate programs.
+              This Institute was founded on <strong>2nd October 1979</strong>, on the occasion of the Birth Anniversary of Mahatma Gandhi, the Father of the Nation, and the Birth Anniversary of Late Shri. Lal Bahadur Shastri, the former Prime Minister of India. Since then, the Institute has grown immensely in size and academic status.
             </p>
           </div>
           <div className="mb-4 flex items-start">
-            <i className="fas fa-lightbulb text-2xl text-yellow-500 mr-3"></i>
+            <i className="fas fa-university text-2xl text-yellow-500 mr-3"></i>
             <p className="text-gray-700">
-              Committed to integrity, innovation, and inclusivity, our alumni achieve success across various fields, maintaining our proud legacy.
+              Today, the Institute proudly boasts <strong>5 Degree Colleges, 1 Law College, 1 Polytechnic, 8 Junior Colleges, 15 Secondary Schools, 14 Primary Schools, 14 Pre-Primary Schools, 2 Study Centres of National Institute of Open Schooling, Noida, and 9 Computer Education Centres</strong>. Our educational institutions have built a trusted name in the field of education.
             </p>
           </div>
           <div className="mb-4 flex items-start">
-            <i className="fas fa-book text-2xl text-red-500 mr-3"></i>
+            <i className="fas fa-users text-2xl text-red-500 mr-3"></i>
             <p className="text-gray-700">
-              Initially focused on arts and sciences, we now offer diverse courses in technology, management, and other professional fields.
+              The Institute is committed to the all-around development of students' personalities, providing facilities for <strong>co-curricular, extra-curricular, and social activities</strong>. The main objective of the Institute is to provide education for the poor and deprived classes.
             </p>
           </div>
           <div className="mb-4 flex items-start">
-            <i className="fas fa-building text-2xl text-purple-500 mr-3"></i>
+            <i className="fas fa-lightbulb text-2xl text-purple-500 mr-3"></i>
             <p className="text-gray-700">
-              Our campus boasts state-of-the-art facilities, including a top-tier library, laboratories, and sports amenities, ensuring a comprehensive educational experience.
+              In a world that is changing rapidly, it is essential to <strong>continuously update yourself</strong>. In this era of knowledge revolution, be innovative in your thinking and creative in your actions. This will help you become a truly successful student in life.
             </p>
           </div>
           <div className="mb-4 flex items-start">
-            <i className="fas fa-theater-masks text-2xl text-indigo-500 mr-3"></i>
+            <i className="fas fa-graduation-cap text-2xl text-indigo-500 mr-3"></i>
             <p className="text-gray-700">
-              We promote holistic development through cultural fests, sports tournaments, and academic conferences, reflecting our commitment to a vibrant campus life.
-            </p>
-          </div>
-          <div className="mb-4 flex items-start">
-            <i className="fas fa-globe text-2xl text-teal-500 mr-3"></i>
-            <p className="text-gray-700">
-              Our diverse community enriches the learning experience. We strive to create an inclusive environment where every student feels valued and supported.
+              Since the academic year 2017-18, we have started a <strong>Women's College</strong> at our Badlapur, Hendre Pada Campus. The establishment of this college is a great honor for women.
             </p>
           </div>
           <div className="flex items-start">
-            <i className="fas fa-road text-2xl text-gray-500 mr-3"></i>
+            <i className="fas fa-star text-2xl text-gray-500 mr-3"></i>
             <p className="text-gray-700">
-              As we look to the future, we remain committed to excellence in education, research, and community engagement, preparing students to make a positive impact globally.
+              Wishing you a very bright and prosperous future for handling situations skillfully.
             </p>
+          </div>
+          <div className="text-right mt-6">
+            <p className="text-gray-700">Yours Sincerely,</p>
+            <p className="text-gray-700 font-bold">Mrs. Pushpalata B. Mhatre</p>
           </div>
         </div>
       </div>
@@ -63,3 +59,4 @@ const History = () => {
 };
 
 export default History;
+
