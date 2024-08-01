@@ -7,35 +7,35 @@ const events = [
     description: "Join us for an exciting Science Fair showcasing innovative projects and experiments by our students.",
     date: "August 15, 2024",
     icon: <FaCalendarAlt className="text-3xl text-blue-500" />,
-    image: "https://source.unsplash.com/300x200/?science,fair"
+    image: "https://i.pinimg.com/originals/6d/c4/c4/6dc4c4a732b38c2d9f3e338283326970.jpg"
   },
   {
     name: "Sports Day",
     description: "A day full of fun and competitive sports activities for all students.",
     date: "September 10, 2024",
     icon: <FaRunning className="text-3xl text-green-500" />,
-    image: "https://source.unsplash.com/300x200/?sports"
+    image: "https://tse3.mm.bing.net/th?id=OIP.if2z3t9JBIpvWVZDYAKcFwHaCv&pid=Api&P=0&h=180"
   },
   {
     name: "Guest Lecture Series",
     description: "Attend lectures by renowned experts in various fields. Expand your knowledge and gain insights.",
     date: "October 5, 2024",
     icon: <FaChalkboardTeacher className="text-3xl text-red-500" />,
-    image: "https://source.unsplash.com/300x200/?lecture"
+    image: "https://i.ytimg.com/vi/D1i-EYMdw5M/maxresdefault.jpg"
   },
   {
     name: "Art Exhibition",
     description: "Explore the creative artworks by our talented students at the annual Art Exhibition.",
     date: "November 12, 2024",
     icon: <FaPaintBrush className="text-3xl text-purple-500" />,
-    image: "https://source.unsplash.com/300x200/?art,exhibition"
+    image: "https://tse2.mm.bing.net/th?id=OIP.sMslNEOZUSPDkcpV6AeudwHaE8&pid=Api&P=0&h=180"
   },
   {
     name: "Music Concert",
     description: "Enjoy an evening of melodious performances by our college band and choir.",
     date: "December 20, 2024",
     icon: <FaMusic className="text-3xl text-yellow-500" />,
-    image: "https://source.unsplash.com/300x200/?music,concert"
+    image: "https://tse4.mm.bing.net/th?id=OIP.p88z2Ua4LUemmMAFYBPoxQHaE8&pid=Api&P=0&h=180"
   },
 ];
 

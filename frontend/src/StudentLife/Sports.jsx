@@ -6,31 +6,31 @@ const sports = [
     name: "Basketball",
     description: "Join our basketball team to compete in local and national tournaments. Practice sessions are held every evening.",
     icon: <FaBasketballBall className="text-3xl text-orange-500" />,
-    image: "https://source.unsplash.com/300x200/?basketball"
+    image: "https://tse1.mm.bing.net/th?id=OIP.hH-n4S2fP35siO4x_pq3LQHaEK&pid=Api&P=0&h=180"
   },
   {
     name: "Football",
     description: "Our football team welcomes players of all skill levels. Participate in regular matches and training sessions.",
     icon: <FaFootballBall className="text-3xl text-green-500" />,
-    image: "https://source.unsplash.com/300x200/?football"
+    image: "https://tse3.mm.bing.net/th?id=OIP.tKMv5IHMsqR0m2pOt-30gwHaEK&pid=Api&P=0&h=180"
   },
   {
     name: "Athletics",
     description: "Take part in various track and field events. We provide training for sprinting, long-distance running, and more.",
     icon: <FaRunning className="text-3xl text-blue-500" />,
-    image: "https://source.unsplash.com/300x200/?athletics"
+    image: "https://wallpapercave.com/wp/wp4303435.jpg"
   },
   {
     name: "Table Tennis",
     description: "Join our table tennis club to enjoy friendly matches and improve your skills. We have sessions every weekend.",
     icon: <FaTableTennis className="text-3xl text-red-500" />,
-    image: "https://source.unsplash.com/300x200/?tabletennis"
+    image: "https://wallpaperset.com/w/full/3/1/f/164028.jpg"
   },
   {
     name: "Volleyball",
     description: "Our volleyball team competes in inter-college tournaments. Practice sessions are held twice a week.",
     icon: <FaVolleyballBall className="text-3xl text-yellow-500" />,
-    image: "https://source.unsplash.com/300x200/?volleyball"
+    image: "https://tse2.mm.bing.net/th?id=OIP.JDmd5jlZ-PLTx5LNtQ21AQHaEK&pid=Api&P=0&h=180"
   },
 ];
 

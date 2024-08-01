@@ -6,32 +6,21 @@ const libraryFeatures = [
     name: "Books Collection",
     description: "Our library houses a vast collection of books across various disciplines, providing resources for research and study.",
     icon: <FaBook className="text-3xl text-blue-500" />,
-    image: "https://source.unsplash.com/300x200/?library,books"
+    image: "https://c1.wallpaperflare.com/preview/563/337/199/book-library-shelf-stack.jpg"
   },
   {
     name: "Digital Resources",
     description: "Access a wide range of digital resources including e-books, online journals, and research databases.",
     icon: <FaLaptop className="text-3xl text-green-500" />,
-    image: "https://source.unsplash.com/300x200/?library,digital"
+    image: "https://thumbs.dreamstime.com/z/digital-library-online-education-concept-laptop-computer-colorful-books-d-rendering-technology-background-180214804.jpg"
   },
   {
     name: "Study Rooms",
     description: "Our library offers quiet study rooms equipped with all the necessary amenities for focused learning.",
     icon: <FaChalkboardTeacher className="text-3xl text-yellow-500" />,
-    image: "https://source.unsplash.com/300x200/?library,study"
+    image: "https://st.hzcdn.com/simgs/98d1af3405d96e3a_4-7505/contemporary-home-office-and-library.jpg"
   },
-  {
-    name: "Research Assistance",
-    description: "Our experienced librarians are available to assist you with your research and reference needs.",
-    icon: <FaSearch className="text-3xl text-red-500" />,
-    image: "https://source.unsplash.com/300x200/?library,research"
-  },
-  {
-    name: "Community Events",
-    description: "Participate in various community events and workshops organized by the library to enhance your learning experience.",
-    icon: <FaUsers className="text-3xl text-purple-500" />,
-    image: "https://source.unsplash.com/300x200/?library,events"
-  },
+
 ];
 
 const Library = () => {

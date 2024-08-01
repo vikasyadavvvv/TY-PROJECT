@@ -34,9 +34,9 @@ const PlacementCell = () => {
         </h2>
         <p>Our top recruiters include:</p>
         <ul className="list-disc list-inside">
-          <li>Company A</li>
-          <li>Company B</li>
-          <li>Company C</li>
+          <li>Infosys</li>
+          <li>TCS: Tata Consultancy Services</li>
+          <li> Oracle</li>
         </ul>
       </section>
       

@@ -1,12 +1,11 @@
 // src/components/Recruiters.js
 import React from 'react';
-import { FaBuilding, FaHandshake, FaIndustry, FaBriefcase } from 'react-icons/fa';
 
 const recruiters = [
-  { name: 'Company A', industry: 'Tech', icon: <FaBuilding className="text-blue-500 text-4xl" /> },
-  { name: 'Company B', industry: 'Finance', icon: <FaHandshake className="text-green-500 text-4xl" /> },
-  { name: 'Company C', industry: 'Manufacturing', icon: <FaIndustry className="text-purple-500 text-4xl" /> },
-  { name: 'Company D', industry: 'Consulting', icon: <FaBriefcase className="text-yellow-500 text-4xl" /> },
+  { name: 'TCS', industry: 'Tech', imgSrc: 'https://mma.prnewswire.com/media/1477373/TCS_Logo.jpg?p=facebook' },
+  { name: 'Capital One', industry: 'Finance', imgSrc: 'https://logodix.com/logo/246500.jpg' },
+  { name: 'Dabur', industry: 'Manufacturing', imgSrc: 'https://tse4.mm.bing.net/th?id=OIP.51fXpHs2LvhuwdCCNZhkIwHaGm&pid=Api&P=0&h=180' },
+  { name: 'Accenture', industry: 'Consulting', imgSrc: 'https://tse4.mm.bing.net/th?id=OIP.SL3dLYvePGonrfH1B4-hxAHaDE&pid=Api&P=0&h=180' },
 ];
 
 const Recruiters = () => {
@@ -17,7 +16,7 @@ const Recruiters = () => {
         {recruiters.map((recruiter, index) => (
           <div key={index} className="bg-white shadow-lg rounded-lg p-6 text-center transform hover:scale-105 transition-transform duration-300">
             <div className="mb-4">
-              {recruiter.icon}
+              <img src={recruiter.imgSrc} alt={recruiter.name} className="w-24 h-24 mx-auto object-cover rounded-full" />
             </div>
             <h2 className="text-2xl font-semibold mb-2">{recruiter.name}</h2>
             <p className="text-gray-600">{recruiter.industry}</p>
