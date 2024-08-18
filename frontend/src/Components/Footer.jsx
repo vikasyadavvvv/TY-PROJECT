@@ -4,8 +4,23 @@ import { FaMapMarkerAlt, FaPhoneAlt } from 'react-icons/fa';
 const Footer = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission logic here
-    alert('Feedback submitted!');
+    
+    const formData = new FormData(e.target);
+    
+    fetch('https://formspree.io/f/YOUR_FORM_ID', {
+      method: 'POST',
+      body: formData,
+      headers: {
+        'Accept': 'application/json'
+      }
+    })
+      .then(response => response.json())
+      .then(data => {
+        alert('Feedback submitted successfully!');
+      })
+      .catch(error => {
+        alert('Failed to send feedback. Please try again.');
+      });
   };
 
   return (
@@ -25,7 +40,8 @@ const Footer = () => {
             <div className="flex items-center mb-4">
               <FaMapMarkerAlt className="text-white" />
               <a href="https://www.google.co.in/maps/place/Sandesh+College+of+Arts+Commerce+%26+Science/@19.1161459,72.9310825,17z/data=!3m1!4b1!4m6!3m5!1s0x3be7c797781ba093:0x3402b356cc8e61a5!8m2!3d19.1161459!4d72.9336574!16s%2Fg%2F1tppqf8m?entry=ttu">
-              <span className="ml-2 hover:text-white">Tagore Nagar, Vikhroli (East), Mumbai <span className='font-mono'>400 083</span></span> </a>
+                <span className="ml-2 hover:text-white">Tagore Nagar, Vikhroli (East), Mumbai <span className='font-mono'>400 083</span></span>
+              </a>
             </div>
             <div className="flex items-center">
               <FaPhoneAlt className="text-white" />
