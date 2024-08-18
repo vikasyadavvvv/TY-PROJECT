@@ -19,20 +19,13 @@ import FacultyPage from './Academics/Faculty';
 import SyllabusPage from './Academics/Syllabus';
 import ExaminationSchedulePage from './Academics/ExaminationSchedule';
 import ResultPage from './Academics/Result';
-import ResearchCentre from './Research/ResearchCentre';
-import Publications from './Research/Publication';
-import OngoingProjects from './Research/OngoingProject';
-import ConferencesAndWorkshops from './Research/ConferenceandWorkshop';
 import ClubsAndSocieties from './StudentLife/ClubsandSocieties';
 import EventsAndActivities from './StudentLife/EventandActivities';
 import Sports from './StudentLife/Sports';
 import Library from './StudentLife/Library';
-import CampusLife from './StudentLife/CampusLife';
 import PlacementCell from './Placement/PlacementCell';
 import Recruiters from './Placement/Recruiters';
 import PlacementStatistics from './Placement/PlacementStatics';
-import AlumniAssociation from './Alumini/AluminiAssociation';
-import NotableAlumni from './Alumini/NotableAlumini';
 import StudentLogin from './Login/StudentLogin';
 import AboutIQAC from './IQAC/AbaoutIQAC';
 import ATRPage from './IQAC/ATR';
@@ -68,20 +61,13 @@ function App() {
         <Route path='/syllabus' element={<SyllabusPage/>}></Route>
         <Route path='/examschedule' element={<ExaminationSchedulePage/>}></Route>
         <Route path='/result' element={<ResultPage/>}></Route>
-        <Route path='/researchcentre' element={<ResearchCentre/>}></Route>
-        <Route path='/publication' element={<Publications/>}></Route>
-        <Route path='/ongoingproject' element={<OngoingProjects/>}></Route>
-        <Route path='/conferenceandworkshop' element={<ConferencesAndWorkshops/>}></Route>
         <Route path='/clubsandsocieties' element={<ClubsAndSocieties/>}></Route>
         <Route path='/eventandactivities' element={<EventsAndActivities/>}></Route>
         <Route path='/sports' element={<Sports/>}></Route>
         <Route path='/library' element={<Library/>}></Route>
-        <Route path='/campuslife' element={<CampusLife/>}></Route>
         <Route path='/placementcell' element={<PlacementCell/>}></Route>
         <Route path='/recruiters' element={<Recruiters/>}></Route>
         <Route path='/placementstatics' element={<PlacementStatistics/>}></Route>
-        <Route path='/aluminiassociation' element={<AlumniAssociation/>}></Route>
-        <Route path='/notablealumini' element={<NotableAlumni/>}></Route>
         <Route path='/studentlogin' element={<StudentLogin/>}></Route>
         <Route path='/abaoutIQAC' element={<AboutIQAC/>}></Route>
         <Route path='/atr' element={<ATRPage/>}></Route>

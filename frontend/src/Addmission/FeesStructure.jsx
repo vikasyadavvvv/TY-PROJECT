@@ -5,19 +5,19 @@ import { faGraduationCap, faRupeeSign, faBook, faMedal, faDollarSign } from '@fo
 
 const FeesStructure = () => {
   const courses = [
-    { name: 'B.Sc IT', fee: '₹ 60,000' },
-    { name: 'B.Sc Plain', fee: '₹ 50,000' },
-    { name: 'B.Com', fee: '₹ 45,000' },
-    { name: 'BBA', fee: '₹ 70,000' },
-    { name: 'BBI', fee: '₹ 65,000' },
-    { name: 'BMS', fee: '₹ 75,000' },
+    { name: 'B.Sc IT', fee: '₹ 30,000' },
+    { name: 'B.Sc Plain', fee: '₹ 20,000' },
+    { name: 'B.Com', fee: '₹ 10,000' },
+    { name: 'BBA', fee: '₹ 15,000' },
+    { name: 'BBI', fee: '₹ 15,000' },
+  
   ];
 
   const additionalFees = [
-    { name: 'Library Fee', fee: '₹ 5,000' },
-    { name: 'Laboratory Fee', fee: '₹ 10,000' },
-    { name: 'Sports Fee', fee: '₹ 3,000' },
-    { name: 'Development Fee', fee: '₹ 2,000' },
+    { name: 'Library Fee', fee: '₹ 2000' },
+    { name: 'Laboratory Fee', fee: '₹ 5000' },
+    { name: 'Sports Fee', fee: '₹ 3000' },
+    { name: 'Development Fee', fee: '₹ 2000' },
   ];
 
   const scholarships = [
@@ -26,7 +26,7 @@ const FeesStructure = () => {
   ];
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
       <h1 className="text-3xl font-bold mb-6 text-center ">Fees Structure</h1>
       
       {/* Courses and Fees */}

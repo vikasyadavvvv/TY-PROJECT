@@ -5,7 +5,7 @@ import { faEnvelope, faPhone, faBuilding } from '@fortawesome/free-solid-svg-ico
 
 const facultyMembers = [
   {
-    name: 'Prof.Tasleem Hafizullah Khan',  
+    name: 'Prof.Pushpa More',  
     photo: 'https://tse4.explicit.bing.net/th?id=OIP.hgWW7DgIs4OdGYIEYfF8EgHaFO&pid=Api&P=0&h=180',
     designation: 'Professor & Head of Department',
     department: 'Computer Science',
@@ -110,7 +110,7 @@ const facultyMembers = [
   },  {
     name: 'Prof. Namrata Rupesh Gaikward',
     photo: 'https://tse4.explicit.bing.net/th?id=OIP.hgWW7DgIs4OdGYIEYfF8EgHaFO&pid=Api&P=0&h=180',
-    designation: 'Lecturer',
+    designation: 'Professor & Head of Department',
     department: 'Business Administration',
     email: 'emilydavis@example.com',
     phone: '567-890-1234'

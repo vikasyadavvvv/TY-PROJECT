@@ -14,14 +14,15 @@ const NAACAccreditation = () => {
           <div className="mb-4">
             <FaCheckCircle className="text-green-500 text-2xl inline-block mr-2" />
             <span className="text-xl font-semibold">Accreditation Status:</span>
-            <p className="ml-10 text-lg">Our college is accredited by NAAC with an 'A' grade.</p>
+            <p className="ml-10 text-lg">Our college is accredited by NAAC with an 'B+' grade.</p>
           </div>
           <div className="mb-4">
             <FaInfoCircle className="text-blue-500 text-2xl inline-block mr-2" />
             <span className="text-xl font-semibold">College Details:</span>
             <p className="ml-10 text-lg">
-              Established in 1985, our college offers a wide range of undergraduate and postgraduate courses.
-            </p>
+            This Institute was founded on 2nd October 1979, on the occasion of the Birth Anniversary of Mahatma Gandhi, the Father of the Nation, and the Birth Anniversary of Late Shri. Lal Bahadur Shastri, the former Prime Minister of India. Since then, the Institute has grown immensely in size and academic status.
+
+</p>
           </div>
           {/* Add more sections as needed */}
         </div>

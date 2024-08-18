@@ -4,8 +4,6 @@ import { Link,  } from 'react-router-dom';
 import History from '../AboutContent/History';
 import Home from './Home';
 import MissionAndVision from '../AboutContent/Mission&Vision';
-import Leadership from '../AboutContent/Leadership';
-import Achievements from '../AboutContent/Achievements';
 import AdmissionProcess from '../Addmission/AdmissionProcess';
 import Course from '../Addmission/Course';
 import EligibilityCriteria from '../Addmission/Eligibility';
@@ -16,19 +14,12 @@ import FacultyPage from '../Academics/Faculty';
 import SyllabusPage from '../Academics/Syllabus';
 import ExaminationSchedulePage from '../Academics/ExaminationSchedule';
 import ResultPage from '../Academics/Result';
-import ResearchCentre from '../Research/ResearchCentre';
-import Publications from '../Research/Publication';
-import OngoingProjects from '../Research/OngoingProject';
-import ConferencesAndWorkshops from '../Research/ConferenceandWorkshop';
 import ClubsAndSocieties from '../StudentLife/ClubsandSocieties';
 import EventsAndActivities from '../StudentLife/EventandActivities';
 import Sports from '../StudentLife/Sports';
 import Library from '../StudentLife/Library';
-import CampusLife from '../StudentLife/CampusLife';
 import PlacementCell from '../Placement/PlacementCell';
 import Recruiters from '../Placement/Recruiters';
-import AlumniAssociation from '../Alumini/AluminiAssociation';
-import NotableAlumni from '../Alumini/NotableAlumini';
 import StudentLogin from '../Login/StudentLogin';
 import AboutIQAC from '../IQAC/AbaoutIQAC';
 import ATRPage from '../IQAC/ATR';
@@ -69,8 +60,6 @@ const Navbar = () => {
               <ul className="absolute left-0 mt-1 bg-white text-black lg:block shadow-lg z-20">
              <Link to="/history" element={<History/>}>  <li className="p-2 bg-white hover:bg-gray-400">President Message</li> </Link>
              <Link to="/mission&vission" element={<MissionAndVision/>} ><li className="p-2 bg- hover:bg-gray-400 ">Mission & Vision</li> </Link>
-            <Link to="/leadership" element={<Leadership/>}>  <li className="p-2 bg- hover:bg-gray-400 ">Leadership</li> </Link>
-            <Link to="/achievement" element={<Achievements/>}><li className="p-2 bg- hover:bg-gray-400 "> Achievements</li></Link>
               </ul>
             )}
           </li>
@@ -99,17 +88,6 @@ const Navbar = () => {
             )}
           </li>
           <li className="text-lg  font-serif relative group mb-2">
-            <button onClick={() => handleDropdown(3)} className="focus:outline-none">Research</button>
-            {openDropdown === 3 && (
-              <ul className="absolute left-0 mt-1 bg-white text-black lg:block shadow-lg z-20">
-              <Link to='/researchcentre' element={<ResearchCentre/>}><li className="p-2 bg-white hover:bg-gray-400">Research Centers</li></Link>  
-              <Link to='/publication' element={<Publications/>}> <li className="p-2 bg-white hover:bg-gray-400">Publications</li></Link>  
-              <Link to='/ongoingproject' element={<OngoingProjects/>}> <li className="p-2 bg-white hover:bg-gray-400">Ongoing Projects</li></Link>  
-              <Link to='/conferenceandworkshop' element={<ConferencesAndWorkshops/>}><li className="p-2 bg-white hover:bg-gray-400">Conferences & Workshops</li></Link>  
-              </ul>
-            )}
-          </li>
-          <li className="text-lg  font-serif relative group mb-2">
             <button onClick={() => handleDropdown(4)} className="focus:outline-none">Student Life</button>
             {openDropdown === 4 && (
               <ul className="absolute left-0 mt-1 bg-white text-black lg:block shadow-lg z-20">
@@ -117,7 +95,6 @@ const Navbar = () => {
                <Link to='/eventandactivities' element={<EventsAndActivities/>}><li className="p-2 bg-white hover:bg-gray-400">Events & Activities</li></Link> 
                <Link to='/sports' element={<Sports/>}><li className="p-2 bg-white hover:bg-gray-400">Sports</li></Link> 
                <Link to='/library' element={<Library/>}><li className="p-2 bg-white hover:bg-gray-400"><a href="#library">Library</a></li></Link> 
-              <Link to='/campuslife' element={<CampusLife/>}><li className="p-2 bg-white hover:bg-gray-400">Campus Life</li></Link>  
               </ul>
             )}
           </li>
@@ -130,16 +107,6 @@ const Navbar = () => {
                <Link to='/placementstatics' element={<PlacementCell/>}><li className="p-2 bg-white hover:bg-gray-400">Placement Statistics</li></Link> 
               </ul>
             )}
-          </li>
-          <li className="text-lg  font-serif relative group mb-2">
-            <button onClick={() => handleDropdown(6)} className="focus:outline-none">Alumni</button>
-            {openDropdown === 6 && (
-              <ul className="absolute left-0 mt-1 bg-white text-black lg:block shadow-lg z-20">
-               <Link to='/aluminiassociation' element={<AlumniAssociation/>}><li className="p-2 bg-white hover:bg-gray-400">Alumni Association</li></Link> 
-               <Link to='/notablealumini' element={<NotableAlumni/>}><li className="p-2 bg-white hover:bg-gray-400">Notable Alumni</li></Link> 
-              </ul>
-            )}
-          
           </li>
 
           <li className="text-lg  font-serif relative group mb-2">
