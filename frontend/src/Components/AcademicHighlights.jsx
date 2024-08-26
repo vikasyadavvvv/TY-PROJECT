@@ -11,16 +11,26 @@ const AcademicHighlights = () => {
             Academic Highlights
           </h2>
           <p className="mt-4 text-lg leading-6 text-gray-500 text-center font-serif">
-            Our institution stands out for its exceptional programs and distinguished faculty. We take pride in offering a range of programs designed to foster expertise and innovation in various fields.
+            Our institution stands out for its exceptional programs and distinguished faculty. We take pride in offering a range of degree programs designed to foster expertise and innovation in various fields.
           </p>
           <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="bg-white p-6 rounded-lg shadow-lg border border-gray-200 hover:shadow-xl transition duration-300">
               <div className="flex items-start">
                 <BookOpenIcon className="h-12 w-12 text-blue-600" />
                 <div className="ml-4">
-                  <h3 className="text-xl font-semibold text-gray-900">Featured Programs</h3>
+                  <h3 className="text-xl font-semibold text-gray-900">Degree Programs</h3>
                   <p className="mt-2 text-base leading-6 text-gray-600">
-                    Our <span className="font-medium text-blue-600">Featured Programs</span> include cutting-edge curricula in engineering, business, and the arts. These programs are meticulously crafted to equip students with critical skills and in-depth knowledge, paving the way for their success in a competitive world.
+                    Our college offers a diverse range of <span className="font-medium text-blue-600">degree programs</span> to cater to various academic interests and career goals. Some of our prominent programs include:
+                  </p>
+                  <ul className="mt-2 list-disc list-inside text-gray-600">
+                    <li>Bachelor of Science in Engineering</li>
+                    <li>Bachelor of Business Administration</li>
+                    <li>Bachelor of Arts in Social Sciences</li>
+                    <li>Bachelor of Commerce</li>
+                    <li>Bachelor of Science in Information Technology</li>
+                  </ul>
+                  <p className="mt-4 text-base leading-6 text-gray-600">
+                    Each program is crafted to provide students with comprehensive knowledge and practical skills, preparing them for success in their chosen fields.
                   </p>
                 </div>
               </div>
@@ -31,7 +41,7 @@ const AcademicHighlights = () => {
                 <div className="ml-4">
                   <h3 className="text-xl font-semibold text-gray-900">Faculty Achievements</h3>
                   <p className="mt-2 text-base leading-6 text-gray-600">
-                    Our <span className="font-medium text-yellow-600">Faculty Achievements</span> reflect our commitment to academic excellence. Our faculty are recognized leaders in their fields, with notable achievements in research, publications, and contributions to their disciplines. They are dedicated mentors, shaping the next generation of scholars and professionals.
+                    Our <span className="font-medium text-yellow-600">faculty members</span> are leaders in their fields, recognized for their groundbreaking research, publications, and contributions to academia. They are dedicated to mentoring the next generation of scholars and professionals.
                   </p>
                 </div>
               </div>
