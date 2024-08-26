@@ -22,10 +22,10 @@ const Header = () => {
 
           {/* College Name and Details */}
           <div className="text-white text-center md:text-left flex-1">
-            <div className="text-xl font-light mb-2 font-['Roboto'] tracking-wider">
+            <div className="text-xl font-bold mb-2 font-['Roboto']  tracking-wider">
               DNYAN PRASARK SHIKSHAN SANSTHA'S
             </div>
-            <div className="text-2xl md:text-4xl font-light mb-4 font-['Roboto'] tracking-wide">
+            <div className="text-2xl md:text-4xl font-bold mb-4 font-['Roboto'] tracking-wide">
               Sandesh College of Arts, Commerce and Science
             </div>
             <div className="flex items-center justify-center md:justify-start text-white text-3xl space-x-4 mt-4">

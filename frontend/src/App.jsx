@@ -7,8 +7,6 @@ import History from './AboutContent/History'
 import Navbar from './Components/Navbar';
 import Home from './Components/Home';
 import MissionAndVision from './AboutContent/Mission&Vision';
-import Leadership from './AboutContent/Leadership';
-import Achievements from './AboutContent/Achievements';
 import AdmissionProcess from './Addmission/AdmissionProcess';
 import Course from './Addmission/Course';
 import EligibilityCriteria from './Addmission/Eligibility';
@@ -49,8 +47,6 @@ function App() {
         <Route path="/home" element={<Home/>}></Route>
         <Route path="/history" element={<History/>}></Route>
         <Route path="/mission&vission" element={<MissionAndVision/>}></Route>
-        <Route path="/leadership" element={<Leadership/>}></Route>
-        <Route path="/achievement" element={<Achievements/>}></Route>
         <Route path="/admissionprocess" element={<AdmissionProcess/>}></Route>
         <Route path="/course" element={<Course/>}></Route>
         <Route path="/eligibility" element={<EligibilityCriteria/>}></Route>
