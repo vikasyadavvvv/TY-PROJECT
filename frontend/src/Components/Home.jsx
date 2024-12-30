@@ -1,4 +1,5 @@
 import AboutSection from "./AboutSection";
+import AcademicCalendar from "./AcademicCalendar";
 import AcademicHighlights from "./AcademicHighlights";
 import HeroSection from "./HeroSection";
 import QuickLinks from "./QuickLinks";
@@ -9,6 +10,7 @@ const Home = () => {
    < HeroSection/>
    <AboutSection/>
    <AcademicHighlights/>
+   <AcademicCalendar/>
    <Testimonials/>
    <QuickLinks/>
     </>  );

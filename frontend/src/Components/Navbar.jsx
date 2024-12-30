@@ -29,6 +29,9 @@ import NAACAccreditation from '../NAAC/ACC';
 import InstitutionInfo from '../NAAC/Institutioninfo';
 import NAACSSR from '../NAAC/SSR';
 import NAACVisit from '../NAAC/NAACvisit';
+import AdmissionForm2 from '../Addmission/AdmissionForm2';
+import AdminLogin from '../Login/AdminLogin';
+
 
 
 const Navbar = () => {
@@ -71,7 +74,9 @@ const Navbar = () => {
              <Link to="/course" element={<Course/>}> <li className="p-2 bg-white hover:bg-gray-400">Courses Offered</li></Link>
              <Link to="/eligibility" element={<EligibilityCriteria/>}><li className="p-2 bg-white hover:bg-gray-400">Eligibility Criteria</li></Link>
              <Link to='/feesstructure'element={<FeesStructure/>} ><li className="p-2 bg-white hover:bg-gray-400">Fees Structure</li></Link>
-              <Link to="/applyform" element={<ApplicationForm/>}>  <li className="p-2 bg-white hover:bg-gray-400">Apply Online</li></Link>
+              <Link to="/enquiryform" element={<ApplicationForm/>}>  <li className="p-2 bg-white hover:bg-gray-400">Enquiry Form</li></Link>
+              <Link to="/admissionform" element={<AdmissionForm2/>}>  <li className="p-2 bg-white hover:bg-gray-400">Application Form</li></Link>
+
               </ul>
             )}
           </li>
@@ -155,7 +160,7 @@ const Navbar = () => {
             {openDropdown === 10 && (
               <ul className="absolute left-0 mt-1 bg-white text-black lg:block shadow-lg z-20">
                <Link to='/studentlogin' element={<StudentLogin/>}><li className="p-2 bg-white hover:bg-gray-400"> Student Login</li></Link> 
-                <li className="p-2 bg-white hover:bg-gray-400"><a href="#association"> Admin Login</a></li>
+               <Link to='/adminlogin' element={<AdminLogin/>}><li className="p-2 bg-white hover:bg-gray-400"> Admin Login</li></Link> 
 
               </ul>
             )}

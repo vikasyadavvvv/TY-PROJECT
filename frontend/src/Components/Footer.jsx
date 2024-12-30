@@ -1,26 +1,33 @@
-import React from 'react';
-import { FaMapMarkerAlt, FaPhoneAlt } from 'react-icons/fa';
+import React, { useState } from 'react';
+import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope } from 'react-icons/fa';
 
 const Footer = () => {
+  const [name, setName] = useState('');
+  const [feedback, setFeedback] = useState('');
+  const [error, setError] = useState('');
+
   const handleSubmit = (e) => {
     e.preventDefault();
     
-    const formData = new FormData(e.target);
-    
-    fetch('https://formspree.io/f/YOUR_FORM_ID', {
-      method: 'POST',
-      body: formData,
-      headers: {
-        'Accept': 'application/json'
-      }
-    })
-      .then(response => response.json())
-      .then(data => {
-        alert('Feedback submitted successfully!');
-      })
-      .catch(error => {
-        alert('Failed to send feedback. Please try again.');
-      });
+    // Validate form fields
+    if (!name || !feedback) {
+      setError('Both name and feedback fields are required.');
+      return;
+    }
+
+    setError('');
+
+    // Construct the mailto link
+    const subject = encodeURIComponent('Feedback from ' + name);
+    const body = encodeURIComponent(`Name: ${name}\nFeedback: ${feedback}`);
+    const mailtoLink = `mailto:sandeshcollege@gmail.com?subject=${subject}&body=${body}`;
+
+    // Open the default email client
+    window.location.href = mailtoLink;
+
+    // Optionally, clear the form
+    setName('');
+    setFeedback('');
   };
 
   return (
@@ -43,24 +50,48 @@ const Footer = () => {
                 <span className="ml-2 hover:text-white">Tagore Nagar, Vikhroli (East), Mumbai <span className='font-mono'>400 083</span></span>
               </a>
             </div>
-            <div className="flex items-center">
+            <div className="flex items-center mb-4">
               <FaPhoneAlt className="text-white" />
               <span className="ml-2 hover:text-white font-mono">2574 4906 2573 1633</span>
+            </div>
+            <div className="flex items-center">
+              <FaEnvelope className="text-white" />
+              <a href="mailto:sandeshcollege@gmail.com" className="ml-2 hover:text-white ">sandeshcollege@gmail.com</a>
             </div>
           </div>
           <div>
             <h3 className="text-xl font-bold mb-4">Feedback</h3>
+            {error && <p className="text-red-500 mb-4">{error}</p>}
             <form onSubmit={handleSubmit}>
               <div className="mb-4">
                 <label htmlFor="name" className="block text-sm font-medium text-gray-300">Name</label>
-                <input type="text" id="name" name="name" className="mt-1 block w-full px-3 py-2 border text-black border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  className="mt-1 block w-full px-3 py-2 border text-black border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                />
               </div>
               <div className="mb-4">
                 <label htmlFor="feedback" className="block text-sm font-medium text-gray-300">Feedback</label>
-                <textarea id="feedback" name="feedback" rows="3" className="mt-1 block w-full px-3 py-2 border text-black border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"></textarea>
+                <textarea
+                  id="feedback"
+                  name="feedback"
+                  value={feedback}
+                  onChange={(e) => setFeedback(e.target.value)}
+                  rows="3"
+                  className="mt-1 block w-full px-3 py-2 border text-black border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                ></textarea>
               </div>
               <div className="text-right">
-                <button type="submit" className="bg-indigo-600 text-white py-2 px-4 rounded-md inline-block hover:bg-indigo-700">Submit</button>
+                <button
+                  type="submit"
+                  className="bg-indigo-600 text-white py-2 px-4 rounded-md inline-block hover:bg-indigo-700"
+                >
+                  Submit
+                </button>
               </div>
             </form>
           </div>

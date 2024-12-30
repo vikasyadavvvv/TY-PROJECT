@@ -19,3 +19,18 @@ body{
   animation: marquee-content 15s ease-in-out infinite;
 }
 
+
+/* Tailwind CSS classes for highlighted dates */
+.bg-blue-200 {
+  background-color: #bfdbfe;
+}
+.text-blue-800 {
+  color: #1e3a8a;
+}
+.font-bold {
+  font-weight: 700;
+}
+.rounded-full {
+  border-radius: 9999px;
+}
+

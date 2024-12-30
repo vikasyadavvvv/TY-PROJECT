@@ -1,60 +1,99 @@
-// src/ApplicationForm.js
-import React from 'react';
+import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faEnvelope, faPhone, faHome, faIdCard, faFileAlt, faGraduationCap } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faEnvelope, faPhone, faFileAlt } from '@fortawesome/free-solid-svg-icons';
 
-const ApplicationForm = () => {
+const AdmissionEnquiryForm = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    message: '',
+    mobileNumber: '',
+    email: ''
+  });
+  const [files, setFiles] = useState({
+    photo: null
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prevData => ({
+      ...prevData,
+      [name]: value
+    }));
+  };
+
+  const handleFileChange = (e) => {
+    const { name, files } = e.target;
+    setFiles(prevFiles => ({
+      ...prevFiles,
+      [name]: files[0]
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Handle form submission logic here
+    console.log(formData);
+    console.log(files);
+  };
+
   return (
-    <div className="container mx-auto my-8 p-4 flex justify-center">
-      <div className="max-w-md w-full">
-        <h1 className="text-3xl font-bold mb-6 text-center">Application Form</h1>
-        <form className="space-y-4">
-          <div className="flex items-center border-b border-gray-300 py-2">
-            <FontAwesomeIcon icon={faUser} className="text-gray-500 mr-3" />
-            <input className="appearance-none bg-transparent border-none w-full text-gray-700 py-1 px-2 leading-tight focus:outline-none" type="text" placeholder="Full Name" />
+    <div className="container mx-auto w-4/4 my-8 p-4 flex justify-center">
+      <div className="max-w-lg w-4/5 bg-white shadow-lg rounded-lg p-6">
+        <h1 className="text-4xl font-extrabold mb-6 text-center text-gray-800">Admission Enquiry Form</h1>
+        <form className="space-y-6" onSubmit={handleSubmit}>
+          <div className="relative">
+            <FontAwesomeIcon icon={faUser} className="absolute text-gray-500 left-3 top-3" />
+            <input 
+              name="name" 
+              className="pl-10 pr-4 py-3 rounded-lg w-full border border-gray-300 focus:border-blue-500 focus:ring-blue-500 focus:outline-none" 
+              type="text" 
+              placeholder="Name" 
+              value={formData.name} 
+              onChange={handleChange} 
+              required 
+            />
           </div>
-          <div className="flex items-center border-b border-gray-300 py-2">
-            <FontAwesomeIcon icon={faEnvelope} className="text-gray-500 mr-3" />
-            <input className="appearance-none bg-transparent border-none w-full text-gray-700 py-1 px-2 leading-tight focus:outline-none" type="email" placeholder="Email" />
+          <div className="relative">
+            <FontAwesomeIcon icon={faEnvelope} className="absolute text-gray-500 left-3 top-3" />
+            <input 
+              name="email" 
+              className="pl-10 pr-4 py-3 rounded-lg w-full border border-gray-300 focus:border-blue-500 focus:ring-blue-500 focus:outline-none" 
+              type="email" 
+              placeholder="Email ID" 
+              value={formData.email} 
+              onChange={handleChange} 
+              required 
+            />
           </div>
-          <div className="flex items-center border-b border-gray-300 py-2">
-            <FontAwesomeIcon icon={faPhone} className="text-gray-500 mr-3" />
-            <input className="appearance-none bg-transparent border-none w-full text-gray-700 py-1 px-2 leading-tight focus:outline-none" type="tel" placeholder="Phone Number" />
+          <div className="relative">
+            <FontAwesomeIcon icon={faPhone} className="absolute text-gray-500 left-3 top-3" />
+            <input 
+              name="mobileNumber" 
+              className="pl-10 pr-4 py-3 rounded-lg w-full border border-gray-300 focus:border-blue-500 focus:ring-blue-500 focus:outline-none" 
+              type="tel" 
+              placeholder="Mobile Number" 
+              value={formData.mobileNumber} 
+              onChange={handleChange} 
+              required 
+            />
           </div>
-          <div className="flex items-center border-b border-gray-300 py-2">
-            <FontAwesomeIcon icon={faHome} className="text-gray-500 mr-3" />
-            <input className="appearance-none bg-transparent border-none w-full text-gray-700 py-1 px-2 leading-tight focus:outline-none" type="text" placeholder="Address" />
-          </div>
-          <div className="flex items-center border-b border-gray-300 py-2">
-            <FontAwesomeIcon icon={faIdCard} className="text-gray-500 mr-3" />
-            <input className="appearance-none bg-transparent border-none w-full text-gray-700 py-1 px-2 leading-tight focus:outline-none" type="text" placeholder="Aadhar Card Number" />
-          </div>
-          <div className="flex items-center border-b border-gray-300 py-2">
-            <FontAwesomeIcon icon={faGraduationCap} className="text-gray-500 mr-3" />
-            <select className="appearance-none bg-transparent border-none w-full text-gray-700 py-1 px-2 leading-tight focus:outline-none">
-              <option>Select Course</option>
-              <option>B.Sc IT</option>
-              <option>B.Sc Plain</option>
-              <option>B.Com</option>
-              <option>BBA</option>
-              <option>BBI</option>
-              <option>BMS</option>
-            </select>
-          </div>
-          <div className="flex items-center border-b border-gray-300 py-2">
-            <FontAwesomeIcon icon={faFileAlt} className="text-gray-500 mr-3" /> 10 <sup>th</sup>  Mrksheet
-            <input className="appearance-none bg-transparent border-none w-full text-gray-700 py-1 px-2 leading-tight focus:outline-none" type="file" placeholder="Upload 10th Marksheet" />
-          </div>
-          <div className="flex items-center border-b border-gray-300 py-2">
-            <FontAwesomeIcon icon={faFileAlt} className="text-gray-500 mr-3" /> 12 <sup>th</sup>  Marksheet
-            <input className="appearance-none bg-transparent border-none w-full text-gray-700 py-1 px-2 leading-tight focus:outline-none" type="file" placeholder="Upload 12th Marksheet" />
-          </div>
-          <div className="flex items-center border-b border-gray-300 py-2">
-            <FontAwesomeIcon icon={faFileAlt} className="text-gray-500 mr-3" /> Leaving Certificte
-            <input className="appearance-none bg-transparent border-none w-full text-gray-700 py-1 px-2 leading-tight focus:outline-none" type="file" placeholder="Upload Leaving Certificate (LC)" />
+          <div className="relative">
+            <FontAwesomeIcon icon={faFileAlt} className="absolute text-gray-500 left-3 top-3" />
+            <textarea 
+              name="message" 
+              className="pl-10 pr-4 py-3 rounded-lg w-full border border-gray-300 focus:border-blue-500 focus:ring-blue-500 focus:outline-none" 
+              placeholder="Message" 
+              value={formData.message} 
+              onChange={handleChange} 
+              rows="4"
+              required 
+            />
           </div>
           <div className="text-center">
-            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" type="submit">
+            <button 
+              className="bg-blue-500 text-white py-3 px-6 rounded-lg hover:bg-blue-600 focus:ring-4 focus:ring-blue-300 focus:outline-none transition duration-150 ease-in-out" 
+              type="submit"
+            >
               Submit
             </button>
           </div>
@@ -64,4 +103,5 @@ const ApplicationForm = () => {
   );
 };
 
-export default ApplicationForm;
+export default AdmissionEnquiryForm;
+

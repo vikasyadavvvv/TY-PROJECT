@@ -1,5 +1,6 @@
 import React from 'react';
-import { BrowserRouter as Router,  Route, Routes } from 'react-router-dom';
+import { useState } from 'react';
+import { BrowserRouter as Router,  Route, Routes ,Navigate} from 'react-router-dom';
 import Footer from "./Components/Footer";
 import Header from "./Components/Header";
 import NewsSection from './Components/NewsSection';
@@ -33,9 +34,14 @@ import NAACAccreditation from './NAAC/ACC';
 import InstitutionInfo from './NAAC/Institutioninfo';
 import NAACSSR from './NAAC/SSR';
 import NAACVisit from './NAAC/NAACvisit';
+import AdmissionForm2 from './Addmission/AdmissionForm2';
+import AdminLogin from './Login/AdminLogin';
+import AdminContent from './Login/AdminContent';
 
 
 function App() {
+  const [isAdminAuthenticated, setIsAdminAuthenticated] = useState(false); // State for admin authentication
+
   return (
     <>
     
@@ -51,7 +57,7 @@ function App() {
         <Route path="/course" element={<Course/>}></Route>
         <Route path="/eligibility" element={<EligibilityCriteria/>}></Route>
         <Route path="/feesstructure" element={<FeesStructure/>}></Route>
-        <Route path="/applyform" element={<ApplicationForm/>}></Route>
+        <Route path="/enquiryform" element={<ApplicationForm/>}></Route>
         <Route path='/department' element={<DepartmentPage/>}></Route>
         <Route path='/faculty' element={<FacultyPage/>}></Route>
         <Route path='/syllabus' element={<SyllabusPage/>}></Route>
@@ -73,6 +79,22 @@ function App() {
         <Route path='/instinfo' element={<InstitutionInfo/>}></Route>
         <Route path='/ssr' element={<NAACSSR/>}></Route>
         <Route path='/naacvisit' element={<NAACVisit/>}></Route>
+        <Route path='/admissionform' element={<AdmissionForm2></AdmissionForm2>}></Route>
+        <Route 
+          path="/adminlogin" 
+          element={<AdminLogin setIsAdminAuthenticated={setIsAdminAuthenticated} />} 
+        />
+
+        {/* Conditional route for AdminContent */}
+        <Route 
+          path="/admincontent" 
+          element={isAdminAuthenticated ? (
+            <AdminContent setIsAdminAuthenticated={setIsAdminAuthenticated} />
+          ) : (
+            <Navigate to="/adminlogin" />
+          )} 
+        />
+
       </Routes>
       <Footer />
 
