@@ -5,9 +5,9 @@ const AdminContent = ({ setIsAdminAuthenticated }) => {
   const navigate = useNavigate();
   const [newNews, setNewNews] = useState({ title: '', date: '', content: '' });
   const [newsList, setNewsList] = useState([]);
+  const [studentList, setStudentList] = useState([]); // New state for students
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
-
 
   // Logout Functionality
   const handleLogout = () => {
@@ -45,7 +45,20 @@ const AdminContent = ({ setIsAdminAuthenticated }) => {
     }
   };
 
-
+  // Fetch Student Data
+  const fetchStudents = async () => {
+    setLoading(true);
+    try {
+      const response = await fetch('http://localhost:5000/api/students'); // Assuming the students API endpoint is '/api/students'
+      if (!response.ok) throw new Error('Failed to fetch students.');
+      const data = await response.json();
+      setStudentList(data);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   // Add News
   const handleSubmit = async (e) => {
@@ -81,10 +94,10 @@ const AdminContent = ({ setIsAdminAuthenticated }) => {
     }
   };
 
-  // Load News on Component Mount
+  // Load News and Students on Component Mount
   useEffect(() => {
     fetchNews();
-    
+    fetchStudents(); // Fetch students as well when component mounts
   }, []);
 
   return (
@@ -168,16 +181,83 @@ const AdminContent = ({ setIsAdminAuthenticated }) => {
         )}
       </div>
 
-      <div>
-      {/* Header Section */}
+      {/* Student Management */}
+      <div className="mt-8 bg-white p-6 shadow-md rounded-lg">
       <header className="mt-20 text-black text-3xl py-2 text-center">
-        <h1 className="text-3xl font-bold">Addmissions</h1>
-      </header>
-    </div>
-    
+          <h1 className="text-3xl font-bold">Admissions</h1>
+        </header>
+
+        <h2 className="text-xl font-bold mb-4">Student Details</h2>
+        {loading ? (
+          <p>Loading students...</p>
+        ) : error ? (
+          <p className="text-red-500">{error}</p>
+        ) : studentList.length === 0 ? (
+          <p>No students available.</p>
+        ) : (
+          <ul className="space-y-4">
+            {studentList.map((student) => (
+              <li key={student._id} className="p-4 bg-gray-50 border rounded-md">
+  <p className="text-sm text-gray-800">
+    <span className="font-bold">FirstName:</span> {student.firstName}
+  </p>
+  <p className="text-sm text-gray-800">
+    <span className="font-bold">MiddleName:</span> {student.middleName}
+  </p>
+  <p className="text-sm text-gray-800">
+    <span className="font-bold">LastName:</span> {student.lastName}
+  </p>
+  <p className="text-sm text-gray-800">
+    <span className="font-bold">Phone:</span> {student.phone}
+  </p>
+  <p className="text-sm text-gray-800">
+    <span className="font-bold">DOB:</span> {student.dob}
+  </p>
+  <p className="text-sm text-gray-800">
+    <span className="font-bold">Address:</span> {student.address}
+  </p>
+  <p className="text-sm text-gray-800">
+    <span className="font-bold">Course:</span> {student.course}
+  </p>
+  <p className="text-sm text-gray-800">
+    <span className="font-bold">Generated ID:</span> {student.generatedId}
+  </p>
+  <p className="text-sm text-gray-800">
+    <span className="font-bold">Twelfth Marksheet:</span> 
+    <a href={student.twelfthMarksheet} target="_blank" className="text-blue-500 hover:underline">View</a>
+  </p>
+  <p className="text-sm text-gray-800">
+    <span className="font-bold">Aadhar Card:</span>
+    <a href={student.aadharCard} target="_blank" className="text-blue-500 hover:underline">View</a>
+  </p>
+  <p className="text-sm text-gray-800">
+    <span className="font-bold">Passport Photo:</span>
+    <a href={student.passportPhoto} target="_blank" className="text-blue-500 hover:underline">View</a>
+  </p>
+  <div className="flex gap-4 mt-4">
+    <button
+      onClick={() => handleConfirmAdmission(student._id)}
+      className="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600"
+    >
+      Confirm Admission
+    </button>
+    <button
+      onClick={() => handleRejectAdmission(student._id)}
+      className="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600"
+    >
+      Reject Admission
+    </button>
+  </div>
+</li>
+
+            ))}
+          </ul>
+        )}
+      </div>
 
     </div>
   );
 };
 
 export default AdminContent;
+

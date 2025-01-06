@@ -8,6 +8,20 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
+// Function to find and return all students
+
+const getAllStudents = async () => {
+  try {
+    const students = await Student.find(); // Fetch all students from the database
+    return students;
+  } catch (error) {
+    console.error("Error fetching students:", error);
+    throw new Error("Failed to fetch students");
+  }
+};
+
+
+// Register student function (existing)
 const registerStudent = async (req, res) => {
   try {
     const {
@@ -24,41 +38,26 @@ const registerStudent = async (req, res) => {
     const { passportPhoto, twelfthMarksheet, aadharCard } = req.files;
 
     // Validate required fields
-    if (
-      !firstName ||
-      !lastName ||
-      !email ||
-      !phone ||
-      !dob ||
-      !address ||
-      !course
-    ) {
-      return res
-        .status(400)
-        .json({ message: "All required fields must be provided." });
+    if (!firstName || !lastName || !email || !phone || !dob || !address || !course) {
+      return res.status(400).json({ message: "All required fields must be provided." });
     }
 
     // Validate file uploads
     if (!passportPhoto || !twelfthMarksheet || !aadharCard) {
-      return res
-        .status(400)
-        .json({ message: "All required files must be uploaded." });
+      return res.status(400).json({ message: "All required files (passportPhoto, twelfthMarksheet, aadharCard) must be uploaded." });
     }
 
     // Upload files to Cloudinary
     const passportPhotoResult = await cloudinary.uploader.upload(
-      passportPhoto[0].path,
-      { folder: "student_uploads/passportPhotos" }
+      passportPhoto[0].path, { folder: "student_uploads/passportPhotos" }
     );
 
     const twelfthMarksheetResult = await cloudinary.uploader.upload(
-      twelfthMarksheet[0].path,
-      { folder: "student_uploads/twelfthMarksheets" }
+      twelfthMarksheet[0].path, { folder: "student_uploads/twelfthMarksheets" }
     );
 
     const aadharCardResult = await cloudinary.uploader.upload(
-      aadharCard[0].path,
-      { folder: "student_uploads/aadharCards" }
+      aadharCard[0].path, { folder: "student_uploads/aadharCards" }
     );
 
     // Extract URLs from Cloudinary results
@@ -69,7 +68,7 @@ const registerStudent = async (req, res) => {
     // Generate student ID based on the course
     const generatedId = generateStudentId(course);
 
-    // Create new student document
+    // Create a new student document
     const newStudent = new Student({
       firstName,
       middleName,
@@ -88,9 +87,10 @@ const registerStudent = async (req, res) => {
     // Save to database
     await newStudent.save();
 
-    res
-      .status(201)
-      .json({ message: "Student registered successfully!", student: newStudent });
+    res.status(201).json({
+      message: "Student registered successfully!",
+      student: newStudent,
+    });
   } catch (err) {
     console.error("Error registering student:", err);
     res.status(500).json({ message: "Internal server error", error: err.message });
@@ -112,5 +112,4 @@ const generateStudentId = (course) => {
   return `${prefix}${randomDigits}`;
 };
 
-module.exports = { registerStudent };
-
+module.exports = { registerStudent, getAllStudents };

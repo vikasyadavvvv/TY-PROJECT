@@ -66,8 +66,8 @@ const studentSchema = new mongoose.Schema(
   }
 );
 
-// Create the Student model from the schema
-const Student = mongoose.model("Student", studentSchema);
+// Check if the model already exists to prevent overwriting
+const Student = mongoose.models.Student || mongoose.model("Student", studentSchema);
 
 module.exports = Student;
 

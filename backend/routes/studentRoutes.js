@@ -3,6 +3,7 @@ const router = express.Router();
 const { registerStudent, getAllStudents } = require("../controllers/studentController");
 const { upload } = require("../Config/CloudinaryConfig"); // Import your Cloudinary and Multer configuration
 
+
 // Middleware for handling file uploads
 const uploadFiles = upload.fields([
   { name: "passportPhoto", maxCount: 1 }, // Field for passport photo (max 1 file)
@@ -37,17 +38,29 @@ router.post("/register", uploadFiles, async (req, res) => {
 });
 
 // Route to fetch all student details
-router.get("/students", async (req, res) => {
+// Import the function to get all students from the database
+
+// Route to get all students
+router.get("/", async (req, res) => {
   try {
-    const students = await getAllStudents(); // Fetch students from the database
+    // Fetch students from the database
+    const students = await getAllStudents();
+
+    // Check if students are available
     if (students && students.length > 0) {
-      res.status(200).json(students); // Return the list of students
+      // Return the list of students as JSON
+      res.status(200).json(students);
     } else {
-      res.status(404).json({ message: "No students found" }); // No students in the database
+      // If no students are found, return a 404 status
+      res.status(404).json({ message: "No students found" });
     }
   } catch (error) {
+    // Log any error and send a 500 error response
     console.error("Error fetching students:", error);
-    res.status(500).json({ error: "Failed to fetch students", details: error.message });
+    res.status(500).json({
+      error: "Failed to fetch students",
+      details: error.message,
+    });
   }
 });
 

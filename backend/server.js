@@ -36,6 +36,7 @@ app.use("/api/news", newsRoutes);  // Dedicated route for managing news
 app.use("/api/students", studentRoutes); // Student-related routes
 app.use("/api/admin", adminRoutes);  // Admin route setup
 
+
 // Root endpoint for health check or basic info
 app.get("/", (req, res) => {
   res.status(200).send("College Website Backend is running!");
