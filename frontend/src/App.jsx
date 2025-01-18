@@ -37,6 +37,7 @@ import NAACVisit from './NAAC/NAACvisit';
 import AdmissionForm2 from './Addmission/AdmissionForm2';
 import AdminLogin from './Login/AdminLogin';
 import AdminContent from './Login/AdminContent';
+import Admissions from './Login/Admissionslist';
 
 
 function App() {
@@ -80,6 +81,7 @@ function App() {
         <Route path='/ssr' element={<NAACSSR/>}></Route>
         <Route path='/naacvisit' element={<NAACVisit/>}></Route>
         <Route path='/admissionform' element={<AdmissionForm2></AdmissionForm2>}></Route>
+        <Route path='/admissionlist' element={<Admissions></Admissions>}></Route>
         <Route 
           path="/adminlogin" 
           element={<AdminLogin setIsAdminAuthenticated={setIsAdminAuthenticated} />} 

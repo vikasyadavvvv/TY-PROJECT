@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import Admissions from './Admissionslist';
 
 const AdminContent = ({ setIsAdminAuthenticated }) => {
   const navigate = useNavigate();
@@ -59,6 +60,10 @@ const AdminContent = ({ setIsAdminAuthenticated }) => {
       setLoading(false);
     }
   };
+
+
+
+
 
   // Add News
   const handleSubmit = async (e) => {
@@ -180,81 +185,19 @@ const AdminContent = ({ setIsAdminAuthenticated }) => {
           </ul>
         )}
       </div>
+      <nav className="bg-white text-gray-800 shadow-md mt-4">
 
-      {/* Student Management */}
-      <div className="mt-8 bg-white p-6 shadow-md rounded-lg">
-      <header className="mt-20 text-black text-3xl py-2 text-center">
-          <h1 className="text-3xl font-bold">Admissions</h1>
-        </header>
-
-        <h2 className="text-xl font-bold mb-4">Student Details</h2>
-        {loading ? (
-          <p>Loading students...</p>
-        ) : error ? (
-          <p className="text-red-500">{error}</p>
-        ) : studentList.length === 0 ? (
-          <p>No students available.</p>
-        ) : (
-          <ul className="space-y-4">
-            {studentList.map((student) => (
-              <li key={student._id} className="p-4 bg-gray-50 border rounded-md">
-  <p className="text-sm text-gray-800">
-    <span className="font-bold">FirstName:</span> {student.firstName}
-  </p>
-  <p className="text-sm text-gray-800">
-    <span className="font-bold">MiddleName:</span> {student.middleName}
-  </p>
-  <p className="text-sm text-gray-800">
-    <span className="font-bold">LastName:</span> {student.lastName}
-  </p>
-  <p className="text-sm text-gray-800">
-    <span className="font-bold">Phone:</span> {student.phone}
-  </p>
-  <p className="text-sm text-gray-800">
-    <span className="font-bold">DOB:</span> {student.dob}
-  </p>
-  <p className="text-sm text-gray-800">
-    <span className="font-bold">Address:</span> {student.address}
-  </p>
-  <p className="text-sm text-gray-800">
-    <span className="font-bold">Course:</span> {student.course}
-  </p>
-  <p className="text-sm text-gray-800">
-    <span className="font-bold">Generated ID:</span> {student.generatedId}
-  </p>
-  <p className="text-sm text-gray-800">
-    <span className="font-bold">Twelfth Marksheet:</span> 
-    <a href={student.twelfthMarksheet} target="_blank" className="text-blue-500 hover:underline">View</a>
-  </p>
-  <p className="text-sm text-gray-800">
-    <span className="font-bold">Aadhar Card:</span>
-    <a href={student.aadharCard} target="_blank" className="text-blue-500 hover:underline">View</a>
-  </p>
-  <p className="text-sm text-gray-800">
-    <span className="font-bold">Passport Photo:</span>
-    <a href={student.passportPhoto} target="_blank" className="text-blue-500 hover:underline">View</a>
-  </p>
-  <div className="flex gap-4 mt-4">
-    <button
-      onClick={() => handleConfirmAdmission(student._id)}
-      className="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600"
-    >
-      Confirm Admission
-    </button>
-    <button
-      onClick={() => handleRejectAdmission(student._id)}
-      className="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600"
-    >
-      Reject Admission
-    </button>
-  </div>
-</li>
-
-            ))}
-          </ul>
-        )}
-      </div>
-
+      <ul className="flex space-x-6">
+          <li>
+            <Link
+              to="/admissionlist"
+              className="hover:text-gray-500 px-3 py-2 rounded-md transition duration-300 text-3xl"
+            >
+              Admission List
+            </Link>
+          </li>
+     </ul>
+     </nav>
     </div>
   );
 };

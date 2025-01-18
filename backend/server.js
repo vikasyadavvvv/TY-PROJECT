@@ -5,6 +5,7 @@ const cors = require("cors");
 const newsRoutes = require("./routes/newsRoutes"); // Import news routes
 const studentRoutes = require("./routes/studentRoutes");
 const adminRoutes = require("./routes/adminRoutes"); // Example: Add admin route
+const confirmAdmission =require("./routes/confirmadmissionroutes")
 
 // Load environment variables from .env file
 dotenv.config();
@@ -35,6 +36,7 @@ const connectDB = async () => {
 app.use("/api/news", newsRoutes);  // Dedicated route for managing news
 app.use("/api/students", studentRoutes); // Student-related routes
 app.use("/api/admin", adminRoutes);  // Admin route setup
+app.use("/api/confirm",confirmAdmission)
 
 
 // Root endpoint for health check or basic info
