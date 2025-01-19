@@ -28,6 +28,37 @@ const confirmAdmission = async (req, res) => {
   }
 };
 
+// Function to reject admission
+const rejectAdmission = async (req, res) => {
+  try {
+    const { studentId } = req.params;
+
+    // Validate studentId
+    if (!studentId) {
+      return res.status(400).json({ message: "Student ID is required" });
+    }
+
+    // Find the student by their generated ID
+    const student = await Student.findOne({ generatedId: studentId });
+
+    if (!student) {
+      return res.status(404).json({ message: "Student not found" });
+    }
+
+    // Update the confirmedAdmission field to false (rejecting admission)
+    student.confirmedAdmission = false;
+    await student.save();
+
+    // Optionally: Delete the student record from the database (uncomment if needed)
+    // await student.remove();
+
+    res.status(200).json({ message: "Admission rejected successfully", student });
+  } catch (error) {
+    console.error("Error rejecting admission:", error);
+    res.status(500).json({ message: "Internal server error", error: error.message });
+  }
+};
+
 // Function to handle student login
 const loginStudent = async (req, res) => {
   try {
@@ -63,5 +94,4 @@ const loginStudent = async (req, res) => {
   }
 };
 
-module.exports = { confirmAdmission, loginStudent };
-
+module.exports = { confirmAdmission, rejectAdmission, loginStudent };

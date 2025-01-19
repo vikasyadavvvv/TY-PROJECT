@@ -1,15 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
 const Admissions = () => {
   const [studentList, setStudentList] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
 
+  // Fetch students from backend
   const fetchStudents = async () => {
     setLoading(true);
     try {
-      const response = await fetch('http://localhost:5000/api/students');
-      if (!response.ok) throw new Error('Failed to fetch students.');
+      const response = await fetch("http://localhost:5000/api/students");
+      if (!response.ok) throw new Error("Failed to fetch students.");
       const data = await response.json();
       setStudentList(data);
     } catch (err) {
@@ -19,6 +20,56 @@ const Admissions = () => {
     }
   };
 
+  // Confirm admission
+  const confirmAdmission = async (generatedId) => {
+    try {
+      const response = await fetch(`http://localhost:5000/api/confirm/confirm/${generatedId}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (!response.ok) throw new Error("Failed to confirm admission.");
+
+      // Optionally update the student list to reflect the change
+      setStudentList((prevList) =>
+        prevList.map((student) =>
+          student.generatedId === generatedId ? { ...student, confirmedAdmission: true, rejectedAdmission: false } : student
+        )
+      );
+
+      alert("Admission confirmed successfully!");
+    } catch (err) {
+      console.error(err.message);
+      alert("Failed to confirm admission. Please try again.");
+    }
+  };
+
+  // Reject admission
+  const rejectAdmission = async (generatedId) => {
+    try {
+      const response = await fetch(`http://localhost:5000/api/confirm/reject/${generatedId}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (!response.ok) throw new Error("Failed to reject admission.");
+
+      setStudentList((prevList) =>
+        prevList.map((student) =>
+          student.generatedId === generatedId ? { ...student, confirmedAdmission: false, rejectedAdmission: true } : student
+        )
+      );
+
+      alert("Admission rejected successfully!");
+    } catch (err) {
+      console.error(err.message);
+      alert("Failed to reject admission. Please try again.");
+    }
+  };
 
   useEffect(() => {
     fetchStudents();
@@ -68,35 +119,58 @@ const Admissions = () => {
               </p>
               <p className="text-sm text-gray-800">
                 <span className="font-bold">Twelfth Marksheet:</span>
-                <a href={student.twelfthMarksheet} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">
+                <a
+                  href={student.twelfthMarksheet}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-500 hover:underline"
+                >
                   View
                 </a>
               </p>
               <p className="text-sm text-gray-800">
                 <span className="font-bold">Aadhar Card:</span>
-                <a href={student.aadharCard} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">
+                <a
+                  href={student.aadharCard}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-500 hover:underline"
+                >
                   View
                 </a>
               </p>
               <p className="text-sm text-gray-800">
                 <span className="font-bold">Passport Photo:</span>
-                <a href={student.passportPhoto} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">
+                <a
+                  href={student.passportPhoto}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-500 hover:underline"
+                >
                   View
                 </a>
               </p>
               <div className="flex gap-4 mt-4">
-                <button
-                  className="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600"
-                >
-                  Confirm Admission
-                </button>
-                <button
-                  className="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600"
-                >
-                  Reject Admission
-                </button>
-              </div>
-            </li>
+  <button
+    onClick={() => confirmAdmission(student.generatedId)} // Use generatedId here
+    className={`px-4 py-2 rounded-md text-white hover:bg-green-600 ${
+      student.confirmedAdmission ? "bg-gray-400 cursor-not-allowed" : "bg-green-500"
+    }`}
+    disabled={student.confirmedAdmission} // Disable if confirmedAdmission is true
+  >
+    Confirm Admission
+  </button>
+  <button
+    onClick={() => rejectAdmission(student.generatedId)} // Use generatedId here
+    className={`px-4 py-2 rounded-md text-white hover:bg-red-600 ${
+      student.rejectedAdmission ? "bg-gray-400 cursor-not-allowed" : "bg-red-500"
+    }`}
+    disabled={student.rejectedAdmission} // Disable if rejectedAdmission is true
+  >
+    Reject Admission
+  </button>
+</div>
+ </li>
           ))}
         </ul>
       )}
