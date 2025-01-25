@@ -38,7 +38,7 @@ import AdmissionForm2 from './Addmission/AdmissionForm2';
 import AdminLogin from './Login/AdminLogin';
 import AdminContent from './Login/AdminContent';
 import Admissions from './Login/Admissionslist';
-
+import StudentContent from './Login/studentContent';
 
 function App() {
   const [isAdminAuthenticated, setIsAdminAuthenticated] = useState(false); // State for admin authentication
@@ -82,6 +82,8 @@ function App() {
         <Route path='/naacvisit' element={<NAACVisit/>}></Route>
         <Route path='/admissionform' element={<AdmissionForm2></AdmissionForm2>}></Route>
         <Route path='/admissionlist' element={<Admissions></Admissions>}></Route>
+        <Route path='/studentcontent' element={<StudentContent></StudentContent>}></Route>
+
         <Route 
           path="/adminlogin" 
           element={<AdminLogin setIsAdminAuthenticated={setIsAdminAuthenticated} />} 

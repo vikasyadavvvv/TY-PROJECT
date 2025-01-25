@@ -20,6 +20,32 @@ const getAllStudents = async () => {
   }
 };
 
+const getStudentByGeneratedId = async (req, res) => {
+  try {
+    const { studentId } = req.params; // Extract the studentId (generatedId) from the request parameters
+
+    // Validate the studentId
+    if (!studentId) {
+      return res.status(400).json({ message: "Student ID is required." });
+    }
+
+    // Find the student with the given generatedId (mapped to studentId)
+    const student = await Student.findOne({ generatedId: studentId });
+
+    // Check if the student exists
+    if (!student) {
+      return res.status(404).json({ message: "Student not found with the given ID." });
+    }
+
+    // Return the student data
+    res.status(200).json({ student });
+  } catch (error) {
+    console.error("Error fetching student by studentId (generatedId):", error);
+    res.status(500).json({ message: "Internal server error", error: error.message });
+  }
+};
+
+
 
 // Register student function (existing)
 const registerStudent = async (req, res) => {
@@ -112,4 +138,4 @@ const generateStudentId = (course) => {
   return `${prefix}${randomDigits}`;
 };
 
-module.exports = { registerStudent, getAllStudents };
+module.exports = { registerStudent, getAllStudents ,getStudentByGeneratedId};

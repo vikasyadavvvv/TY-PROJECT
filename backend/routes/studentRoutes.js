@@ -1,8 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const { registerStudent, getAllStudents } = require("../controllers/studentController");
+const { registerStudent, getAllStudents, getStudentByGeneratedId } = require("../controllers/studentController");
 const { upload } = require("../Config/CloudinaryConfig"); // Import your Cloudinary and Multer configuration
-
 
 // Middleware for handling file uploads
 const uploadFiles = upload.fields([
@@ -38,9 +37,6 @@ router.post("/register", uploadFiles, async (req, res) => {
 });
 
 // Route to fetch all student details
-// Import the function to get all students from the database
-
-// Route to get all students
 router.get("/", async (req, res) => {
   try {
     // Fetch students from the database
@@ -59,6 +55,24 @@ router.get("/", async (req, res) => {
     console.error("Error fetching students:", error);
     res.status(500).json({
       error: "Failed to fetch students",
+      details: error.message,
+    });
+  }
+});
+
+// Route to get a student by their generatedId
+router.get("/:studentId", async (req, res) => {
+  try {
+    const { studentId } = req.params; // Extract studentId from the URL parameter
+
+    // Call the controller function to fetch the student by their ID
+    const student = await getStudentByGeneratedId(req, res);
+
+    // Since `getStudentByGeneratedId` already sends the response, no additional processing is needed here.
+  } catch (error) {
+    console.error("Error fetching student by studentId:", error);
+    res.status(500).json({
+      error: "Failed to fetch student by studentId",
       details: error.message,
     });
   }
