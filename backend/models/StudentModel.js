@@ -60,9 +60,16 @@ const studentSchema = new mongoose.Schema(
       required: false,
       default: "",
     },
-    confirmedAdmission: { type: Boolean, default: false }, // New field to confirm admission
-
-     
+    confirmedAdmission: { 
+      type: Boolean, 
+      default: false 
+    }, // New field to confirm admission
+    
+    subjects: {  // New field to store selected subjects
+      type: Map,
+      of: [String],  // Array of subjects per semester
+    },
+    
   },
   {
     timestamps: true, // Adds createdAt and updatedAt timestamps
@@ -73,4 +80,3 @@ const studentSchema = new mongoose.Schema(
 const Student = mongoose.models.Student || mongoose.model("Student", studentSchema);
 
 module.exports = Student;
-

@@ -9,7 +9,6 @@ cloudinary.config({
 });
 
 // Function to find and return all students
-
 const getAllStudents = async () => {
   try {
     const students = await Student.find(); // Fetch all students from the database
@@ -24,20 +23,16 @@ const getStudentByGeneratedId = async (req, res) => {
   try {
     const { studentId } = req.params; // Extract the studentId (generatedId) from the request parameters
 
-    // Validate the studentId
     if (!studentId) {
       return res.status(400).json({ message: "Student ID is required." });
     }
 
-    // Find the student with the given generatedId (mapped to studentId)
     const student = await Student.findOne({ generatedId: studentId });
 
-    // Check if the student exists
     if (!student) {
       return res.status(404).json({ message: "Student not found with the given ID." });
     }
 
-    // Return the student data
     res.status(200).json({ student });
   } catch (error) {
     console.error("Error fetching student by studentId (generatedId):", error);
@@ -45,9 +40,6 @@ const getStudentByGeneratedId = async (req, res) => {
   }
 };
 
-
-
-// Register student function (existing)
 const registerStudent = async (req, res) => {
   try {
     const {
@@ -59,21 +51,19 @@ const registerStudent = async (req, res) => {
       dob,
       address,
       course,
+      subjects,
     } = req.body;
 
     const { passportPhoto, twelfthMarksheet, aadharCard } = req.files;
 
-    // Validate required fields
-    if (!firstName || !lastName || !email || !phone || !dob || !address || !course) {
+    if (!firstName || !lastName || !email || !phone || !dob || !address || !course || !subjects) {
       return res.status(400).json({ message: "All required fields must be provided." });
     }
 
-    // Validate file uploads
     if (!passportPhoto || !twelfthMarksheet || !aadharCard) {
       return res.status(400).json({ message: "All required files (passportPhoto, twelfthMarksheet, aadharCard) must be uploaded." });
     }
 
-    // Upload files to Cloudinary
     const passportPhotoResult = await cloudinary.uploader.upload(
       passportPhoto[0].path, { folder: "student_uploads/passportPhotos" }
     );
@@ -86,15 +76,12 @@ const registerStudent = async (req, res) => {
       aadharCard[0].path, { folder: "student_uploads/aadharCards" }
     );
 
-    // Extract URLs from Cloudinary results
     const passportPhotoUrl = passportPhotoResult.secure_url;
     const twelfthMarksheetUrl = twelfthMarksheetResult.secure_url;
     const aadharCardUrl = aadharCardResult.secure_url;
 
-    // Generate student ID based on the course
     const generatedId = generateStudentId(course);
 
-    // Create a new student document
     const newStudent = new Student({
       firstName,
       middleName,
@@ -104,13 +91,13 @@ const registerStudent = async (req, res) => {
       dob,
       address,
       course,
+      subjects,
       generatedId,
       passportPhoto: passportPhotoUrl,
       twelfthMarksheet: twelfthMarksheetUrl,
       aadharCard: aadharCardUrl,
     });
 
-    // Save to database
     await newStudent.save();
 
     res.status(201).json({
@@ -123,7 +110,6 @@ const registerStudent = async (req, res) => {
   }
 };
 
-// Helper function to generate student ID based on course
 const generateStudentId = (course) => {
   const coursePrefix = {
     "B.Sc IT": "IT",
@@ -134,8 +120,9 @@ const generateStudentId = (course) => {
   };
 
   const prefix = coursePrefix[course] || "UNKNOWN";
-  const randomDigits = Math.floor(1000 + Math.random() * 9000); // Generate a random 4-digit number
+  const randomDigits = Math.floor(1000 + Math.random() * 9000);
   return `${prefix}${randomDigits}`;
 };
 
-module.exports = { registerStudent, getAllStudents ,getStudentByGeneratedId};
+module.exports = { registerStudent, getAllStudents, getStudentByGeneratedId };
+

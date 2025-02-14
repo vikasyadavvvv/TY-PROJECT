@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Admissions from './Admissionslist';
+import UpdateResults from './Updateresult';
 
 const AdminContent = ({ setIsAdminAuthenticated }) => {
   const navigate = useNavigate();
@@ -191,11 +192,20 @@ const AdminContent = ({ setIsAdminAuthenticated }) => {
           <li>
             <Link
               to="/admissionlist"
-              className="hover:text-gray-500 px-3 py-2 rounded-md transition duration-300 text-3xl"
+              className="hover:text-gray-500 px-3 py-2 rounded-md transition duration-300 text-2xl"
             >
               Admission List
             </Link>
           </li>
+          <li>
+            <Link
+              to="/updateresult"
+              className="hover:text-gray-500 px-3 py-2 rounded-md transition duration-300 text-2xl"
+            >
+              Update Results
+            </Link>
+          </li>
+
      </ul>
      </nav>
     </div>

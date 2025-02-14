@@ -39,6 +39,8 @@ import AdminLogin from './Login/AdminLogin';
 import AdminContent from './Login/AdminContent';
 import Admissions from './Login/Admissionslist';
 import StudentContent from './Login/studentContent';
+import ApplySubjects from './Login/ApplySubject';
+import UpdateResults from './Login/Updateresult';
 
 function App() {
   const [isAdminAuthenticated, setIsAdminAuthenticated] = useState(false); // State for admin authentication
@@ -83,6 +85,8 @@ function App() {
         <Route path='/admissionform' element={<AdmissionForm2></AdmissionForm2>}></Route>
         <Route path='/admissionlist' element={<Admissions></Admissions>}></Route>
         <Route path='/studentcontent' element={<StudentContent></StudentContent>}></Route>
+        <Route path='/apply-subjects' element={<ApplySubjects></ApplySubjects>}></Route>
+        <Route path='/updateresult' element={<UpdateResults></UpdateResults>}></Route>
 
         <Route 
           path="/adminlogin" 

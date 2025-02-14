@@ -97,6 +97,13 @@ const StudentContent = () => {
           <p>No student details found.</p>
         )}
       </div>
+      <button
+  onClick={() => navigate("/apply-subjects", { state: { studentDetails } })}
+  className="mt-4 bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 focus:outline-none"
+>
+  Apply for Subjects
+</button>
+
     </div>
   );
 };
