@@ -7,6 +7,7 @@ const studentRoutes = require("./routes/studentRoutes");
 const adminRoutes = require("./routes/adminRoutes"); // Example: Add admin route
 const confirmAdmission =require("./routes/confirmadmissionroutes")
 const selectsubjets=require('./routes/subjectroute')
+const enterResult=require("./routes/updateresultroute")
 
 // Load environment variables from .env file
 dotenv.config();
@@ -39,6 +40,7 @@ app.use("/api/students", studentRoutes); // Student-related routes
 app.use("/api/admin", adminRoutes);  // Admin route setup
 app.use("/api/confirm",confirmAdmission)
 app.use('/api/subjects',selectsubjets)
+app.use("/api/result",enterResult)
 
 
 // Root endpoint for health check or basic info

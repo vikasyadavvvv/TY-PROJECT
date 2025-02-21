@@ -6,6 +6,12 @@ const UpdateResults = () => {
   const [filteredStudents, setFilteredStudents] = useState([]);
   const [selectedStudent, setSelectedStudent] = useState(null);
   const [subjects, setSubjects] = useState({});
+  const [marks, setMarks] = useState({});
+  const [gpa, setGpa] = useState("--");
+  const [status, setStatus] = useState("");
+  const [overallStatus, setOverallStatus] = useState("Fail");
+
+  
 
   useEffect(() => {
     const fetchStudents = async () => {
@@ -23,35 +29,94 @@ const UpdateResults = () => {
 
   const handleSearch = () => {
     const results = students.filter(student =>
-      student && student.generatedId ? student.generatedId.toLowerCase().includes(search.toLowerCase()) : false
+      student?.generatedId?.toLowerCase().includes(search.toLowerCase())
     );
     setFilteredStudents(results);
   };
 
-  // Fetch subjects for a selected student
   const fetchSubjects = async (generatedId) => {
-    console.log("Fetching subjects for:", generatedId); // Debugging log
-
     try {
       const response = await fetch("http://localhost:5000/api/subjects/getSubjects", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ generatedId }),
       });
-
-      // Check the response status
-      if (!response.ok) {
-        throw new Error(`Error fetching subjects: ${response.statusText}`);
-      }
-
+      if (!response.ok) throw new Error(`Error fetching subjects: ${response.statusText}`);
+      
       const data = await response.json();
       setSubjects(data.subjects || {});
+      setMarks({});
+      setGpa("--");
+      setStatus("");
     } catch (error) {
       console.error("Error fetching subjects:", error);
       setSubjects({});
     }
   };
 
+  const getPassingMarks = (course, type) => {
+    const passingCriteria = {
+      "B.Sc IT": { internal: 7, theory: 26, practical: 18 },
+      "B.Sc Plain": { internal: 7, theory: 26, practical: 18 },
+      BCOM: { internal: 7, theory: 28 },
+      BA: { internal: 7, theory: 28 },
+    };
+    return passingCriteria[course]?.[type] || 0;
+  };
+
+  const handleMarksChange = (semester, subject, type, value) => {
+    setMarks(prev => ({
+      ...prev,
+      [semester]: {
+        ...prev[semester],
+        [subject]: {
+          ...prev[semester]?.[subject],
+          [type]: Number(value),
+        },
+      },
+    }));
+  };
+
+  const calculateGpa = () => {
+    if (!selectedStudent || Object.keys(marks).length === 0) return;
+  
+    let totalMarks = 0;
+    let totalSubjects = 0;
+    let studentFailed = false;
+  
+    Object.entries(subjects).forEach(([semester, subjectList]) => {
+      subjectList.forEach((subject) => {
+        const internal = marks[semester]?.[subject]?.internal || 0;
+        const theory = marks[semester]?.[subject]?.theory || 0;
+        const practical = ["B.Sc IT", "B.Sc Plain"].includes(selectedStudent.course)
+          ? marks[semester]?.[subject]?.practical || 0
+          : null;
+  
+        const passingInternal = getPassingMarks(selectedStudent.course, "internal");
+        const passingTheory = getPassingMarks(selectedStudent.course, "theory");
+        const passingPractical = getPassingMarks(selectedStudent.course, "practical");
+  
+        // Check if student has failed in any component
+        if (internal < passingInternal || theory < passingTheory || (practical !== null && practical < passingPractical)) {
+          studentFailed = true;
+        }
+  
+        // If passed, add to total
+        totalMarks += internal + theory + (practical || 0);
+        totalSubjects += practical !== null ? 3 : 2; // Count total subjects
+      });
+    });
+  
+    if (studentFailed) {
+      setGpa("--");
+      setOverallStatus("Fail");
+    } else {
+      const calculatedGpa = (totalMarks / totalSubjects).toFixed(2); // Simple average
+      setGpa(calculatedGpa);
+      setOverallStatus("Pass");
+    }
+  };
+  
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4">
       <h1 className="text-3xl font-bold text-gray-800 mb-4">Update Results</h1>
@@ -72,8 +137,8 @@ const UpdateResults = () => {
       </div>
       <ul className="w-80 bg-white shadow rounded p-4 mt-4">
         {filteredStudents.length > 0 ? (
-          filteredStudents.map((student, index) => (
-            <li key={student._id || index} className="p-2 border-b last:border-b-0 flex justify-between items-center">
+          filteredStudents.map((student) => (
+            <li key={student._id} className="p-2 border-b last:border-b-0 flex justify-between items-center">
               <div>
                 <strong>Name:</strong> {student.firstName} {student.middleName} {student.lastName} <br />
                 <strong>Course:</strong> {student.course} <br />
@@ -97,36 +162,49 @@ const UpdateResults = () => {
 
       {selectedStudent && (
         <div className="mt-6 w-3/4 bg-white shadow rounded p-4">
-          <h2 className="text-xl font-bold text-gray-700">Subjects for {selectedStudent.firstName} {selectedStudent.middleName} {selectedStudent.lastName}</h2>
-          {Object.keys(subjects).length > 0 ? (
-            Object.entries(subjects).map(([semester, subjectList]) => (
-              <div key={semester} className="mt-4">
-                <h3 className="text-lg font-semibold text-gray-700">{semester.toUpperCase()}</h3>
-                <table className="w-full mt-2 border-collapse border border-gray-300">
-                  <thead>
-                    <tr className="bg-gray-200">
-                      <th className="border p-2">Subject Name</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {Array.isArray(subjectList) && subjectList.length > 0 ? (
-                      subjectList.map((subject, index) => (
-                        <tr key={index} className="border">
-                          <td className="border p-2">{subject}</td>
-                        </tr>
-                      ))
-                    ) : (
-                      <tr>
-                        <td className="p-2 text-gray-500 text-center" colSpan="2">No subjects found</td>
-                      </tr>
-                    )}
-                  </tbody>
-                </table>
-              </div>
-            ))
-          ) : (
-            <p className="text-gray-500">No subjects found</p>
-          )}
+          <h2 className="text-xl font-bold text-gray-700">
+            Subjects for {selectedStudent.firstName} {selectedStudent.middleName} {selectedStudent.lastName}
+          </h2>
+          <table className="w-full mt-2 border-collapse border border-gray-300">
+            <thead>
+              <tr className="bg-gray-200">
+                <th className="border p-2">Subject</th>
+                <th className="border p-2">Internal</th>
+                <th className="border p-2">Theory</th>
+                {["B.Sc IT", "B.Sc Plain"].includes(selectedStudent.course) && <th className="border p-2">Practical</th>}
+              </tr>
+            </thead>
+            <tbody>
+              {Object.entries(subjects).map(([semester, subjectList]) =>
+                subjectList.map((subject) => (
+                  <tr key={subject} className="border">
+                    <td className="border p-2">{subject}</td>
+                    <td className="border p-2">
+                      <input type="number" className="w-16 p-1 border text-center" onChange={(e) => handleMarksChange(semester, subject, "internal", e.target.value)} />
+                    </td>
+                    <td className="border p-2">
+                      <input type="number" className="w-16 p-1 border text-center" onChange={(e) => handleMarksChange(semester, subject, "theory", e.target.value)} />
+                    </td>
+                    <td className="border p-2">
+                      <input type="number" className="w-16 p-1 border text-center" onChange={(e) => handleMarksChange(semester, subject, "practical", e.target.value)} />
+                    </td>
+
+                  </tr>
+                ))
+              )}
+            </tbody>
+          </table>
+          <button
+  className="mt-4 px-4 py-2 bg-purple-500 text-white rounded hover:bg-purple-600"
+  onClick={calculateGpa}
+>
+  Calculate GPA
+</button>
+
+<div className="mt-4 p-4 bg-gray-200 rounded text-center w-1/2">
+  <h3 className="text-lg font-semibold">Overall Status: <span className={overallStatus === "Pass" ? "text-green-600" : "text-red-600"}>{overallStatus}</span></h3>
+  <h3 className="text-lg font-semibold">GPA: <span className="text-blue-600">{gpa}</span></h3>
+</div>
         </div>
       )}
     </div>

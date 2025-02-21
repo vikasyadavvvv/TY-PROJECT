@@ -51,12 +51,12 @@ const registerStudent = async (req, res) => {
       dob,
       address,
       course,
-      subjects,
+      
     } = req.body;
 
     const { passportPhoto, twelfthMarksheet, aadharCard } = req.files;
 
-    if (!firstName || !lastName || !email || !phone || !dob || !address || !course || !subjects) {
+    if (!firstName || !lastName || !email || !phone || !dob || !address || !course ) {
       return res.status(400).json({ message: "All required fields must be provided." });
     }
 
@@ -91,7 +91,6 @@ const registerStudent = async (req, res) => {
       dob,
       address,
       course,
-      subjects,
       generatedId,
       passportPhoto: passportPhotoUrl,
       twelfthMarksheet: twelfthMarksheetUrl,
