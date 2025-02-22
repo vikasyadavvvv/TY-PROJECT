@@ -34,6 +34,8 @@ const connectDB = async () => {
   }
 };
 
+
+
 // Add routes to the app
 app.use("/api/news", newsRoutes);  // Dedicated route for managing news
 app.use("/api/students", studentRoutes); // Student-related routes

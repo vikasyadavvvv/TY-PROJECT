@@ -47,64 +47,83 @@ const StudentContent = () => {
     }
   }, [generatedId]);
 
+
+
   return (
-    <div className="relative flex items-center justify-center min-h-screen bg-gray-100">
-      <button
-        onClick={handleLogout}
-        className="absolute top-4 right-4 bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 focus:outline-none"
-      >
-        Logout
-      </button>
+<div className="relative flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4">
+  {/* Logout Button */}
+  <button
+    onClick={handleLogout}
+    className="absolute top-4 right-4 bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 focus:outline-none"
+  >
+    Logout
+  </button>
 
-      <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md text-center">
-        <h2 className="text-3xl font-bold mb-4">
-          Welcome, {studentDetails ? studentDetails.firstName : "Student"}!
-        </h2>
+  {/* Student Details Card */}
+  <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md text-center">
+    <h2 className="text-3xl font-bold mb-4">
+      Welcome, {studentDetails ? studentDetails.firstName : "Student"}!
+    </h2>
 
-        {loading ? (
-          <p>Loading student details...</p>
-        ) : error ? (
-          <p className="text-red-500">{error}</p>
-        ) : studentDetails ? (
-          <div className="space-y-4">
-            {console.log("Rendered studentDetails:", studentDetails)}
-            <p>
-  <span className="font-bold">Passport Photo:</span>
-</p>
-{studentDetails.passportPhoto ? (
-  <div className="flex justify-center">
-    <img
-      src={studentDetails.passportPhoto}
-      alt="Passport"
-      className="w-32 h-32 object-cover rounded-lg shadow-md"
-    />
-  </div>
-) : (
-  <p>No passport photo available</p>
-)}
-
-            <p><span className="font-bold">First Name:</span> {studentDetails.firstName || "N/A"}</p>
-            <p><span className="font-bold">Middle Name:</span> {studentDetails.middleName || "N/A"}</p>
-            <p><span className="font-bold">Last Name:</span> {studentDetails.lastName || "N/A"}</p>
-            <p><span className="font-bold">Email:</span> {studentDetails.email || "N/A"}</p>
-            <p><span className="font-bold">Phone:</span> {studentDetails.phone || "N/A"}</p>
-            <p><span className="font-bold">DOB:</span> {studentDetails.dob || "N/A"}</p>
-            <p><span className="font-bold">Address:</span> {studentDetails.address || "N/A"}</p>
-            <p><span className="font-bold">Course:</span> {studentDetails.course || "N/A"}</p>
-            <p><span className="font-bold">Generated ID:</span> {studentDetails.generatedId || "N/A"}</p>
+    {loading ? (
+      <p>Loading student details...</p>
+    ) : error ? (
+      <p className="text-red-500">{error}</p>
+    ) : studentDetails ? (
+      <div className="space-y-4">
+        <p>
+          <span className="font-bold">Passport Photo:</span>
+        </p>
+        {studentDetails.passportPhoto ? (
+          <div className="flex justify-center">
+            <img
+              src={studentDetails.passportPhoto}
+              alt="Passport"
+              className="w-32 h-32 object-cover rounded-lg shadow-md"
+            />
           </div>
         ) : (
-          <p>No student details found.</p>
+          <p>No passport photo available</p>
         )}
+
+        <p><span className="font-bold">First Name:</span> {studentDetails.firstName || "N/A"}</p>
+        <p><span className="font-bold">Middle Name:</span> {studentDetails.middleName || "N/A"}</p>
+        <p><span className="font-bold">Last Name:</span> {studentDetails.lastName || "N/A"}</p>
+        <p><span className="font-bold">Email:</span> {studentDetails.email || "N/A"}</p>
+        <p><span className="font-bold">Phone:</span> {studentDetails.phone || "N/A"}</p>
+        <p><span className="font-bold">DOB:</span> {studentDetails.dob || "N/A"}</p>
+        <p><span className="font-bold">Address:</span> {studentDetails.address || "N/A"}</p>
+        <p><span className="font-bold">Course:</span> {studentDetails.course || "N/A"}</p>
+        <p><span className="font-bold">Generated ID:</span> {studentDetails.generatedId || "N/A"}</p>
       </div>
-      <button
-  onClick={() => navigate("/apply-subjects", { state: { studentDetails } })}
-  className="mt-4 bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 focus:outline-none"
+    ) : (
+      <p>No student details found.</p>
+    )}
+  </div>
+
+  {/* Buttons Section */}
+ 
+  <div className="flex flex-col items-center gap-4 mt-6">
+  <button
+  
+      onClick={() => navigate("/apply-subjects", { state: { studentDetails } })}
+      className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 focus:outline-none"
+    >
+      Apply for Subjects
+    </button>
+    <button
+  onClick={() => navigate("/view-result", { state: { generatedId: studentDetails?.generatedId } })}
+  className="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 focus:outline-none"
 >
-  Apply for Subjects
+  View Result
 </button>
 
-    </div>
+
+   
+
+   
+  </div>
+</div>
   );
 };
 

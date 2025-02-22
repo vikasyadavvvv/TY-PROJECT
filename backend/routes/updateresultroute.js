@@ -1,7 +1,8 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const { saveMarks } = require('../controllers/updateresultcontroller'); // Ensure correct import
+const resultController = require("../controllers/updateresultcontroller");
 
-router.post('/enter-marks', saveMarks); // Use correct function name
+router.post("/saveOrUpdate", resultController.saveOrUpdateResults);
+router.get("/:generatedId", resultController.getStudentResults);
 
 module.exports = router;

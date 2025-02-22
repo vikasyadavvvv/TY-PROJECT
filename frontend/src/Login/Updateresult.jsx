@@ -59,7 +59,7 @@ const UpdateResults = () => {
       "B.Sc IT": { internal: 7, theory: 26, practical: 18 },
       "B.Sc Plain": { internal: 7, theory: 26, practical: 18 },
       BCOM: { internal: 7, theory: 28 },
-      BA: { internal: 7, theory: 28 },
+      BBA: { internal: 7, theory: 28 },
     };
     return passingCriteria[course]?.[type] || 0;
   };
@@ -81,15 +81,15 @@ const UpdateResults = () => {
     if (!selectedStudent || Object.keys(marks).length === 0) return;
   
     let totalMarks = 0;
-    let totalSubjects = 0;
+    let totalPossibleMarks = 0;
     let studentFailed = false;
   
-    Object.entries(subjects).forEach(([semester, subjectList]) => {
-      subjectList.forEach((subject) => {
-        const internal = marks[semester]?.[subject]?.internal || 0;
-        const theory = marks[semester]?.[subject]?.theory || 0;
+    Object.entries(marks).forEach(([semester, subjects]) => {
+      Object.entries(subjects).forEach(([subjectName, markDetails]) => {
+        const internal = markDetails.internal || 0;
+        const theory = markDetails.theory || 0;
         const practical = ["B.Sc IT", "B.Sc Plain"].includes(selectedStudent.course)
-          ? marks[semester]?.[subject]?.practical || 0
+          ? markDetails.practical || 0
           : null;
   
         const passingInternal = getPassingMarks(selectedStudent.course, "internal");
@@ -101,9 +101,15 @@ const UpdateResults = () => {
           studentFailed = true;
         }
   
-        // If passed, add to total
+        // Add total marks
         totalMarks += internal + theory + (practical || 0);
-        totalSubjects += practical !== null ? 3 : 2; // Count total subjects
+  
+        // Add total possible marks (assuming full marks for internal, theory, and practical)
+        const maxInternal = 30;  // Adjust if internal marks vary
+        const maxTheory = 70;    // Adjust if theory marks vary
+        const maxPractical = ["B.Sc IT", "B.Sc Plain"].includes(selectedStudent.course) ? 50 : 0; // Adjust if needed
+  
+        totalPossibleMarks += maxInternal + maxTheory + maxPractical;
       });
     });
   
@@ -111,11 +117,66 @@ const UpdateResults = () => {
       setGpa("--");
       setOverallStatus("Fail");
     } else {
-      const calculatedGpa = (totalMarks / totalSubjects).toFixed(2); // Simple average
+      // Normalize GPA out of 10
+      const calculatedGpa = totalPossibleMarks > 0 ? ((totalMarks / totalPossibleMarks) * 10).toFixed(2) : "0.00";
       setGpa(calculatedGpa);
       setOverallStatus("Pass");
     }
   };
+  
+
+  const saveMarksToDatabase = async () => {
+    if (!selectedStudent || !marks || Object.keys(marks).length === 0) {
+      alert("Please enter marks before saving.");
+      return;
+    }
+  
+    // Ensure GPA and status are recalculated before saving
+    calculateGpa(); 
+  
+    // Convert marks object into the correct structure
+    const formattedSubjects = {};
+    Object.keys(marks).forEach(semesterKey => {
+      const semesterNumber = semesterKey.replace(/\D/g, ""); // Extract semester number
+  
+      formattedSubjects[semesterNumber] = Object.entries(marks[semesterKey]).map(([subjectName, markDetails]) => ({
+        subjectName,
+        internal: markDetails.internal || 0,
+        theory: markDetails.theory || 0,
+        practical: markDetails.practical || 0
+      }));
+    });
+  
+    console.log("Formatted Subjects:", formattedSubjects);
+    console.log(`Saving GPA: ${gpa}, Status: ${overallStatus}`);
+  
+    try {
+      const response = await fetch("http://localhost:5000/api/result/saveOrUpdate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          generatedId: selectedStudent.generatedId,
+          course: selectedStudent.course,
+          subjects: formattedSubjects,
+          gpa, // Save calculated GPA
+          overallStatus, // Save pass/fail status
+        }),
+      });
+  
+      const responseData = await response.json();
+  
+      if (!response.ok) {
+        console.error("Backend Error Response:", responseData);
+        throw new Error(responseData.message || "Failed to save marks.");
+      }
+  
+      alert(responseData.message);
+    } catch (error) {
+      console.error("Error saving marks:", error);
+      alert("Failed to save marks. Check console for details.");
+    }
+  };
+  
   
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4">
@@ -205,6 +266,13 @@ const UpdateResults = () => {
   <h3 className="text-lg font-semibold">Overall Status: <span className={overallStatus === "Pass" ? "text-green-600" : "text-red-600"}>{overallStatus}</span></h3>
   <h3 className="text-lg font-semibold">GPA: <span className="text-blue-600">{gpa}</span></h3>
 </div>
+<button
+  className="mt-4 px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600"
+  onClick={saveMarksToDatabase}
+>
+  Save Marks
+</button>
+
         </div>
       )}
     </div>
