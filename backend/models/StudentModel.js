@@ -65,11 +65,12 @@ const studentSchema = new mongoose.Schema(
       default: false 
     }, // New field to confirm admission
     
-    subjects: {  // New field to store selected subjects
+    subjects: {
       type: Map,
-      of: [String],  // Array of subjects per semester
+      of: [String], // Map of semesters where each semester has an array of subjects
+      default: {},
     },
-    
+     
   },
   {
     timestamps: true, // Adds createdAt and updatedAt timestamps

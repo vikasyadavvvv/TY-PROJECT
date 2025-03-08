@@ -1,23 +1,24 @@
 const mongoose = require("mongoose");
 
-const SubjectSchema = new mongoose.Schema({
-  subjectName: { type: String, required: true },
-  internal: { type: Number, required: true },
-  theory: { type: Number, required: true },
-  practical: { type: Number, required: true },
+const subjectSchema = new mongoose.Schema({
+  subjectName: String,
+  internal: Number,
+  theory: Number,
+  practical: Number,
 });
 
-const ResultSchema = new mongoose.Schema({
+const semesterSchema = new mongoose.Schema({
+  semesterNumber: Number,
+  gpa: { type: String, default: "--" }, // Ensure it's stored as a String
+  overallStatus: { type: String, default: "Fail" }, // Ensure it's included
+  subjects: [subjectSchema],
+});
+
+const resultSchema = new mongoose.Schema({
   generatedId: { type: String, required: true, unique: true },
-  studentName: { type: String, required: true },
-  course: { type: String, required: true },
-  subjects: {
-    type: Map,
-    of: [SubjectSchema], // Each semester (key) holds an array of SubjectSchema objects
-    required: true,
-  },
-  gpa: { type: String, default: "--" },
-  overallStatus: { type: String, default: "Fail" },
+  studentName: String,
+  course: String,
+  semesters: [semesterSchema],
 });
 
-module.exports = mongoose.model("Result", ResultSchema);
+module.exports = mongoose.model("Result", resultSchema);

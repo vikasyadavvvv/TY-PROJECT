@@ -2,20 +2,22 @@ const Student = require("../models/StudentModel"); // Adjust path as necessary
 
 // ✅ Controller to FETCH subjects based on generatedId
 const getSubjects = async (req, res) => {
-  const { generatedId } = req.body; // Use generatedId in the request body
-
   try {
-    // Find student by generatedId (assuming generatedId is unique)
+    const { generatedId } = req.body;
+
+    if (!generatedId) {
+      return res.status(400).json({ message: "Generated ID is required" });
+    }
+
     const student = await Student.findOne({ generatedId });
 
     if (!student) {
       return res.status(404).json({ message: "Student not found" });
     }
 
-    // Send back the subjects, assuming subjects is an object with semester keys and subject lists as values
     res.status(200).json({
       message: "Subjects fetched successfully",
-      subjects: student.subjects || {}, // Ensure this matches your schema
+      subjects: student.subjects || {},
     });
   } catch (error) {
     console.error("Error fetching subjects:", error);
@@ -28,24 +30,46 @@ const getSubjects = async (req, res) => {
 
 // ✅ Controller to UPDATE subjects for a student
 const updateSubjects = async (req, res) => {
-  const { studentId, selectedSubjects } = req.body; // Expecting { semester, subjectList }
-
   try {
-    // Find the student
-    const student = await Student.findById(studentId);
+    console.log("Received request data:", req.body);
+
+    const { studentId, selectedSubjects } = req.body; // Changed from generatedId to studentId
+
+    if (!studentId) {
+      return res.status(400).json({ message: "Student ID is required" });
+    }
+
+    if (!selectedSubjects || typeof selectedSubjects !== "object") {
+      console.error("Invalid request data:", req.body);
+      return res.status(400).json({ message: "Selected subjects must be an object" });
+    }
+
+    const student = await Student.findById(studentId); // Using findById instead of generatedId
 
     if (!student) {
       return res.status(404).json({ message: "Student not found" });
     }
 
-    // Update the subjects while maintaining structure
-    student.subjects = selectedSubjects; // Should be an array of { semester, subjectList }
+    console.log("Existing student subjects:", student.subjects);
+
+    // Ensure that selectedSubjects only contains arrays
+    for (const semester in selectedSubjects) {
+      if (!Array.isArray(selectedSubjects[semester])) {
+        return res.status(400).json({
+          message: `Subjects for ${semester} must be an array`,
+        });
+      }
+    }
+
+    // Merge existing subjects with new ones
+    student.subjects = new Map([...student.subjects, ...Object.entries(selectedSubjects)]);
     await student.save();
 
-    // Return the updated student
+    console.log("Updated student subjects:", student.subjects);
+
     res.status(200).json({
       message: "Subjects updated successfully",
-      student,
+      subjects: student.subjects,
     });
   } catch (error) {
     console.error("Error updating subjects:", error);
@@ -54,8 +78,10 @@ const updateSubjects = async (req, res) => {
       error: error.message,
     });
   }
-}
+};
+
 module.exports = {
   getSubjects,
   updateSubjects,
 };
+

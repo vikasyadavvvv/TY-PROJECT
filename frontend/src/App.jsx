@@ -42,6 +42,7 @@ import StudentContent from './Login/studentContent';
 import ApplySubjects from './Login/ApplySubject';
 import UpdateResults from './Login/Updateresult';
 import ViewResult from './Login/Viewresult';
+import UpdateMarks from './Login/Updatemarks';
 
 function App() {
   const [isAdminAuthenticated, setIsAdminAuthenticated] = useState(false); // State for admin authentication
@@ -90,6 +91,9 @@ function App() {
         <Route path='/updateresult' element={<UpdateResults></UpdateResults>}></Route>
         <Route path='/view-result' element={<ViewResult></ViewResult>}></Route>
         <Route path="/view-result/:generatedId" element={<ViewResult />} />
+        <Route path='/updatemarks' element={<UpdateMarks></UpdateMarks>}></Route>
+        <Route path='/updatemarks/:generatedId' element={<UpdateMarks></UpdateMarks>}></Route>
+
 
 
         <Route 

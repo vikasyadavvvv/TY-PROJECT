@@ -202,9 +202,18 @@ const AdminContent = ({ setIsAdminAuthenticated }) => {
               to="/updateresult"
               className="hover:text-gray-500 px-3 py-2 rounded-md transition duration-300 text-2xl"
             >
-              Update Results
+               Results
             </Link>
           </li>
+          <li>
+            <Link
+              to="/updatemarks"
+              className="hover:text-gray-500 px-3 py-2 rounded-md transition duration-300 text-2xl"
+            >
+              Update Marks
+            </Link>
+          </li>
+
 
      </ul>
      </nav>
