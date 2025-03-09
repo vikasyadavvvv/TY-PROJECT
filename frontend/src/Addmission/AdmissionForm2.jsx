@@ -15,6 +15,7 @@ const AdmissionForm2 = () => {
     aadharCard: null,
     passportPhoto: null,
   });
+  const [loading, setLoading] = useState(false);
 
   const generateId = (course) => {
     const courseCode = {
@@ -22,7 +23,6 @@ const AdmissionForm2 = () => {
       "B.Com": "BC",
       "BBA": "BA",
       "B.Sc Plain": "BS",
-      "BBI": "BI",
     }[course];
 
     const randomNumber = Math.floor(1000 + Math.random() * 9000); // Generate a 4-digit random number
@@ -44,6 +44,8 @@ const AdmissionForm2 = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
+
   
     const formDataToSubmit = new FormData();
     formDataToSubmit.append("firstName", formData.firstName);
@@ -82,6 +84,9 @@ const AdmissionForm2 = () => {
     } catch (error) {
       console.error("Error submitting form:", error);
       alert("An error occurred while submitting the form.");
+    }
+    finally{
+      setLoading(false)
     }
   };
   
@@ -214,7 +219,6 @@ const AdmissionForm2 = () => {
               <option value="B.Com">B.Com</option>
               <option value="BBA">BBA</option>
               <option value="B.Sc Plain">B.Sc Plain</option>
-              <option value="BBI">BBI</option>
             </select>
           </div>
 
@@ -282,13 +286,41 @@ const AdmissionForm2 = () => {
 
           {/* Submit Button */}
           <div className="flex justify-center">
-            <button
-              type="submit"
-              className="px-6 py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
-            >
-              Submit
-            </button>
-          </div>
+        <button
+          type="submit"
+          disabled={loading}
+          className="px-6 py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 flex items-center"
+        >
+          {loading ? (
+            <>
+              <svg
+                className="animate-spin h-5 w-5 mr-2 text-white"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle
+                  className="opacity-25"
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="currentColor"
+                  strokeWidth="4"
+                ></circle>
+                <path
+                  className="opacity-75"
+                  fill="currentColor"
+                  d="M4 12a8 8 0 018-8v8H4z"
+                ></path>
+              </svg>
+              Submitting...
+            </>
+          ) : (
+            "Submit"
+          )}
+        </button>
+      </div>
+
         </form>
       </div>
     </div>

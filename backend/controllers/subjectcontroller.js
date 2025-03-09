@@ -80,8 +80,53 @@ const updateSubjects = async (req, res) => {
   }
 };
 
+// ✅ Controller to CHECK if subjects are already selected
+const checkSelectedSubjects = async (req, res) => {
+  try {
+    const { studentId, semester } = req.body;
+
+    if (!studentId || !semester) {
+      return res.status(400).json({ message: "Student ID and semester are required" });
+    }
+
+    const student = await Student.findById(studentId).lean();
+
+    if (!student) {
+      return res.status(404).json({ message: "Student not found" });
+    }
+
+    // Ensure student has a subjects field
+    if (!student.subjects || !student.subjects[semester]) {
+      return res.status(200).json({
+        message: `No subjects selected for ${semester}`,
+        alreadySelected: false,
+        subjects: [],
+      });
+    }
+
+    const alreadySelected = student.subjects[semester].length > 0;
+
+    res.status(200).json({
+      message: alreadySelected
+        ? `Subjects for ${semester} are already selected`
+        : `No subjects selected for ${semester}`,
+      alreadySelected,
+      subjects: student.subjects[semester],
+    });
+  } catch (error) {
+    console.error("❌ Error checking selected subjects:", error);
+    res.status(500).json({
+      message: "Internal server error while checking selected subjects",
+      error: error.message,
+    });
+  }
+};
+
+
+
 module.exports = {
   getSubjects,
   updateSubjects,
+  checkSelectedSubjects
 };
 

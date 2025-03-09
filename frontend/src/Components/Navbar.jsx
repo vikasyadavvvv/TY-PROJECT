@@ -13,7 +13,6 @@ import DepartmentPage from '../Academics/Department';
 import FacultyPage from '../Academics/Faculty';
 import SyllabusPage from '../Academics/Syllabus';
 import ExaminationSchedulePage from '../Academics/ExaminationSchedule';
-import ResultPage from '../Academics/Result';
 import ClubsAndSocieties from '../StudentLife/ClubsandSocieties';
 import EventsAndActivities from '../StudentLife/EventandActivities';
 import Sports from '../StudentLife/Sports';
@@ -88,7 +87,6 @@ const Navbar = () => {
             <Link to='/faculty' element={<FacultyPage/>}><li className="p-2 bg-white hover:bg-gray-400">Faculty</li></Link>  
             <Link to='/syllabus' element={<SyllabusPage/>}> <li className="p-2 bg-white hover:bg-gray-400">Syllabus</li> </Link>             
             <Link to='/examschedule' element={<ExaminationSchedulePage/>}> <li className="p-2 bg-white hover:bg-gray-400">Examination Schedule</li> </Link>
-            <Link to='/result' element={<ResultPage/>}> <li className="p-2 bg-white hover:bg-gray-400">Results</li></Link>    
               </ul>
             )}
           </li>

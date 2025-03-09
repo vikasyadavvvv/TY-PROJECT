@@ -17,7 +17,6 @@ import DepartmentPage from './Academics/Department';
 import FacultyPage from './Academics/Faculty';
 import SyllabusPage from './Academics/Syllabus';
 import ExaminationSchedulePage from './Academics/ExaminationSchedule';
-import ResultPage from './Academics/Result';
 import ClubsAndSocieties from './StudentLife/ClubsandSocieties';
 import EventsAndActivities from './StudentLife/EventandActivities';
 import Sports from './StudentLife/Sports';
@@ -67,7 +66,6 @@ function App() {
         <Route path='/faculty' element={<FacultyPage/>}></Route>
         <Route path='/syllabus' element={<SyllabusPage/>}></Route>
         <Route path='/examschedule' element={<ExaminationSchedulePage/>}></Route>
-        <Route path='/result' element={<ResultPage/>}></Route>
         <Route path='/clubsandsocieties' element={<ClubsAndSocieties/>}></Route>
         <Route path='/eventandactivities' element={<EventsAndActivities/>}></Route>
         <Route path='/sports' element={<Sports/>}></Route>

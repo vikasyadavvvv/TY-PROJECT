@@ -4,38 +4,49 @@ import { useLocation } from "react-router-dom";
 const ViewResult = () => {
   const location = useLocation();
   const generatedId = location.state?.generatedId;
-  const [result, setResult] = useState(null);
+  const [semesters, setSemesters] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    const fetchResult = async () => {
-      if (!generatedId) {
-        setError("Generated ID is missing.");
-        setLoading(false);
+  // Fetch results function
+  const fetchSubjects = async (generatedId) => {
+    try {
+      console.log(`🔍 Fetching subjects for ID: ${generatedId}...`);
+
+      const response = await fetch(`http://localhost:5000/api/result/${generatedId}`);
+      const data = await response.json();
+
+      console.log("📥 API Response:", data); // ✅ Debug API response
+
+      if (!response.ok) {
+        throw new Error(data.message || "Failed to fetch subjects");
+      }
+
+      if (!data.semesters || !Array.isArray(data.semesters)) {
+        console.warn("⚠️ No semesters found in API response!");
+        setSemesters([]); // Prevents UI crash
         return;
       }
 
-      try {
-        console.log(`Fetching from: http://localhost:5000/api/result/${generatedId}`);
-        const response = await fetch(`http://localhost:5000/api/result/${generatedId}`);
+      console.log("✅ Fetched Semesters:", data.semesters);
+      setSemesters(data.semesters);
+    } catch (error) {
+      console.error("❌ Error fetching subjects:", error);
+      setError(error.message || "Error fetching results");
+      setSemesters([]);
+    } finally {
+      setLoading(false);
+    }
+  };
 
-        if (!response.ok) {
-          throw new Error(`Error: ${response.status} - ${response.statusText}`);
-        }
-
-        const data = await response.json();
-        console.log("Fetched Data:", data);
-        setResult(data);
-      } catch (err) {
-        console.error("Error fetching results:", err);
-        setError(err.message || "Error fetching results");
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchResult();
+  // UseEffect to fetch results on component mount
+  useEffect(() => {
+    if (generatedId) {
+      fetchSubjects(generatedId);
+    } else {
+      setError("Generated ID is missing.");
+      setLoading(false);
+    }
   }, [generatedId]);
 
   return (
@@ -46,23 +57,19 @@ const ViewResult = () => {
         {loading && <p className="text-blue-500">Fetching data...</p>}
         {error && <p className="text-red-500">{error}</p>}
 
-        {!loading && !error && result ? (
+        {!loading && !error && semesters.length > 0 ? (
           <div className="space-y-6">
-            {/* Student Information */}
-            <div className="text-lg font-semibold">
-              <p>Student Name: <span className="font-normal">{result.studentName}</span></p>
-              <p>Course: <span className="font-normal">{result.course}</span></p>
-              <p>GPA: <span className="font-normal">{result.gpa}</span></p>
-              <p>Overall Status: <span className={`font-bold ${result.overallStatus === 'Pass' ? 'text-green-600' : 'text-red-500'}`}>
-                {result.overallStatus}
-              </span></p>
-            </div>
+            {semesters.map((sem, index) => (
+              <div key={index} className="mb-6">
+                <h3 className="text-xl font-semibold text-gray-800 mb-2">
+                  Semester {sem.semesterNumber} - GPA: {sem.gpa}
+                </h3>
+                <p className={`font-bold ${sem.overallStatus === 'Pass' ? 'text-green-600' : 'text-red-500'}`}>
+                  {sem.overallStatus}
+                </p>
 
-            {/* Subject Marks Table */}
-            <div className="overflow-x-auto">
-              {Object.entries(result.subjects || {}).map(([sem, subjects]) => (
-                <div key={sem} className="mb-6">
-                  <h3 className="text-xl font-semibold text-gray-800 mb-2">Semester {sem}</h3>
+                {/* Subject Marks Table */}
+                <div className="overflow-x-auto">
                   <table className="w-full border-collapse border border-gray-300 shadow-md rounded-lg">
                     <thead>
                       <tr className="bg-gray-200 text-gray-700">
@@ -73,8 +80,8 @@ const ViewResult = () => {
                       </tr>
                     </thead>
                     <tbody>
-                      {subjects.map((subject, index) => (
-                        <tr key={index} className="text-gray-800 odd:bg-gray-100 even:bg-white">
+                      {sem.subjects.map((subject, subIndex) => (
+                        <tr key={subIndex} className="text-gray-800 odd:bg-gray-100 even:bg-white">
                           <td className="border border-gray-300 px-4 py-2 text-left">{subject.subjectName}</td>
                           <td className="border border-gray-300 px-4 py-2 text-center">{subject.internal}</td>
                           <td className="border border-gray-300 px-4 py-2 text-center">{subject.theory}</td>
@@ -84,8 +91,8 @@ const ViewResult = () => {
                     </tbody>
                   </table>
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
         ) : (
           !loading && <p className="text-gray-700">No result found.</p>
@@ -96,6 +103,3 @@ const ViewResult = () => {
 };
 
 export default ViewResult;
-
-
-
